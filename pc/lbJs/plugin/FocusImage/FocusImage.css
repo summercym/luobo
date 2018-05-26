@@ -1,0 +1,118 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.leftBt{
+	cursor: pointer;
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	border-radius: 50px;
+	line-height: 50px;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	font-size: 40px;
+	margin-top: -25px;
+	left: 15px;
+	z-index: 100;
+	background: url(image/left.png) no-repeat center;
+}
+.rightBt{
+	cursor: pointer;
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	border-radius: 50px;
+	line-height: 50px;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	margin-top: -25px;
+	right: 15px;
+	font-size: 40px;
+	z-index: 100;
+	background: url(image/right.png) no-repeat center;
+}
+.viewFrame{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 1;
+}
+.viewFrame img{
+	display: block;
+	border: none;
+	width: 0%;
+	height: 0%;
+	position: absolute;
+	z-index: 2;
+}
+
+.viewFrame .leftImg{
+	left: 0;
+	top: 0;
+	width: 0%;
+	height: 0%;
+}
+.viewFrame .rightImg{
+	
+	right: 0;
+	top: 0;
+	width: 0%;
+	height: 0%;
+}
+.viewFrame .showImg{
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.animateMt{
+	-webkit-transition: all ease-in  0.5s;
+	-moz-transition: all ease-in  0.5s;
+	-ms-transition: all ease-in  0.5s;
+	-o-transition: all ease-in  0.5s;
+	transition: all ease-in  0.5s;
+}
+
+.arrawBox{
+	position: absolute;
+	z-index: 111;
+	right: 20px;
+	bottom: 20px;
+	display: table;
+	width: auto;
+	height: 20px;
+}
+.arrawBox  div{
+	display: table-cell;
+	width: 20px;
+	height: 20px;
+}
+.arrawBox div p{
+	width: 5px;
+	height: 5px;
+	margin: 0 auto;
+	margin-top: 7px;
+	border-radius: 10px;
+	background: #fff;
+	padding: 0;
+	display: block;
+	box-shadow: #000 0 0 10px;
+	-webkit-transition: all ease-in  0.5s;
+	-moz-transition: all ease-in  0.5s;
+	-ms-transition: all ease-in  0.5s;
+	-o-transition: all ease-in  0.5s;
+	transition: all ease-in  0.5s;
+}
+.arrawBox div.hover p{
+	width: 15px;
+	background: #ffffff;
+}
+
+
+
+
+
+

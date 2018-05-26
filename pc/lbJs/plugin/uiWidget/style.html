@@ -1,0 +1,2183 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>智慧校园前端公共组件</title>
+	<script language="javascript" src="uiWidget.js"></script>
+	<link rel="stylesheet" href="uiWidget.css" />
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<div class="headDiv">
+		<div class="headDivTitle">外研讯飞 - 智慧校园UI组件库API</div>
+		<div class="headDivNav">
+			<span>V0.2-20170503</span>
+			<span>By 外研讯飞·MOOC事业部</span>
+		</div>
+	</div>
+	<div class="frame">
+		<div class="uiTypeFrameContent">
+			<ul class="uiTypeFrame">
+				<li id="lognav" class="hover">更新日志</li>
+				<li id="publicMethod">Public Function</li>
+				<li id="tipnav">TipView提示</li>
+				<li id="hovertipnav">HoverTipView提示</li>
+				<li id="loadingnav">LoadingView加载框</li>
+				<li id="alertnav">AlertView信息提示框</li>
+				<li id="ajaxplusnav">AjaxPlus对象</li>
+				<li id="treenav">TreeView树组件</li>
+				<li id="checknav">CheckView单/多选</li>
+				<li id="imagebase64nav">ImageBase64图像截取</li>
+				<li id="selectnav">SelectView下拉框</li>
+				<li id="scrollnav">ScrollView滚动条</li>
+				<li id="pagenav">PageView分页</li>
+				<li id="tabnav">TabView对象</li>
+				<li id="requestnav">RequestUrl对象</li>
+			</ul>
+		</div>
+		<a class="downLoad" href="uiWidget.zip">下载插件</a>
+		<div class="cadeBody">
+			<div id="logbox" class="cadeBodyNode">
+				<div class="box p10 logFrame">
+					<div class="title">发版日志(2017年07月10日)：</div>
+					<div class="logContent">
+						<div class="caption pb20">ImageBase64</div>
+						<ul>
+							<li>增加方法 .setFormat 和 .getFormat 方法，用来设置输出格式</li>
+							<li>增加方法 .setEncoderOptions 和 .getEncoderOptions 方法，用来设置输出质量</li>
+							<li>.setEncoderOptions方法，在输出格式为image/jpeg和image/webp格式下有效</li>
+						</ul>
+					</div>
+				</div>
+				<div class="box p10 logFrame">
+					<div class="title">发版日志(2017年06月29日)：</div>
+					<div class="logContent">
+						<div class="caption pb20">注意！</div>
+						<ul>
+							<li>在此版本之后，取消自动引用UIWidget.css文件</li>
+							<li>将selectView及内部类首字母也改成了大写</li>
+						</ul>
+					</div>
+					<div class="logContent">
+						<div class="caption pb20">创建插件</div>
+						<ul>
+							<li>PageView</li>
+							<li>HoverTipView</li>
+							<li>TabView</li>
+						</ul>
+					</div>
+					<div class="logContent">
+						<div class="caption pb20">AlertView</div>
+						<ul>
+							<li>增加配置参数messagePadding，可以设定弹框内部边距</li>
+							<li>增加messagePadding方法</li>
+							<li>如果message传递的是Dom元素，在callback(_type,_message)被回调的时候，可对_message进行处理，比如添加到其他位置并返回false阻止组件默认处理，否则会将message添加到body中隐藏</li>
+							<li>配置项classNames数组中默认类第一个字母变成了大写</li>
+						</ul>
+					</div>
+					<div class="logContent">
+						<div class="caption pb20">TipView</div>
+						<ul>
+							<li>增加radius配置参数，支持改变圆角</li>
+						</ul>
+					</div>
+					<div class="logContent">
+						<div class="caption pb20">ScrollView</div>
+						<ul>
+							<li>增加radius配置参数，支持改变圆角</li>
+							<li>改变创建方式，第一个参数为target，第二个参数为配置参数</li>
+							<li>配置参数 margin 由数组变为文本或数字，如"0 0 5px 0"或"5px"或5</li>
+							<li>方法setMargin变更为margin，参数同上</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="pagebox" class="cadeBodyNode hide">
+				<div class="codeView pb10 mb10">
+					<span class="themeFontColor">PageView</span>分页插件，可自定义多种视图显示方式
+				</div>
+				<div class="box p10 pb20 mb20">
+					<div class="title pb20">举例：</div>
+					<div class="pageViewTarget" style="text-align:center"></div>
+				</div>
+				<div class="p10 box">
+					<div class="title pb20">代码说明：</div>
+					<div class="lh25">
+						<div class="border pb10">
+							var pageView=PageView(".pageViewTarget",{totalPage:12});
+						</div>
+						<div class="line-height mt10">
+							<div class="">配置参数如下：</div>
+							<div class="gap">
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb">
+										<div>var pageView=PageView(_target,{</div>
+										<div class="zhushi">//_target可以是class,id</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">currentPage:1,</span></div>
+										<div class="zhushi">//当前页码</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">totalPage:0,</span></div>
+										<div class="zhushi">//总页码数</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">pageSize:10,</span></div>
+										<div class="zhushi">//每页条数</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">showTotalPage:true,</span></div>
+										<div class="zhushi">//是否显示总页数</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">showPageSize:true,</span></div>
+										<div class="zhushi">//是否显示每页条数</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">showGotoPage:true,</span></div>
+										<div class="zhushi">//是否显示跳转页码块</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">pageSizeList:[20,50,100],</span></div>
+										<div class="zhushi">//页码段</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">totalPageTemplete:"共{totalPage}页",</span></div>
+										<div class="zhushi">//总页数页面模板，可自定义</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">pageSizeTemplete:"每页{pageSize}条",</span></div>
+										<div class="zhushi">//每页条数页面模板，可自定义</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">gotoPageTemplete:"跳转至{gotoPage}页",</span></div>
+										<div class="zhushi">//跳转页码块页面模板，可自定义</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">pageSizeCallback:function(_pageSize){},</span></div>
+										<div class="zhushi">//pageSize更改后的回掉</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">pageChangeCallback:function(_page){}</span></div>
+										<div class="zhushi">//换页后的回掉</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox">
+										<div>});</div>
+										<div></div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">.totalPage()</span></div>
+										<div class="zhushi">//获取或设置总页数</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">.currentPage()</span></div>
+										<div class="zhushi">//获取或设置当前页码</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">.appendTo()</span></div>
+										<div class="zhushi">//将分页控件追加到页面某处</div>
+									</div>
+								</div>
+								<div class="bfb lh25">
+									<div class="leftrightBox bfb hoverBg">
+										<div class="pl25"><span class="shuxing">.pageSize()</span></div>
+										<div class="zhushi">//获取或者设置pageSize</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script>
+					var pageView=PageView(".pageViewTarget",{totalPage:12});
+				</script>
+			</div>
+			<div id="hovertipbox" class="cadeBodyNode hide">
+				<div class="codeView pb10 mb10">
+					<span class="themeFontColor">HoverTipView</span>用于鼠标移入移出显示提示信息，或动态控制显示提示信息
+				</div>
+				<div class="p10 box mb20">
+					<div class="title pb20">实例：</div>
+					<div class="pb10 pl25">
+						<span id="hovertipTopTest">移入在顶部出现提示</span>
+						<span class="ml25" id="hovertipBottomTest">移入在顶部出现提示</span>
+						<span class="textLink fr" onclick="hovertipTopTest.show(2000)">触发显示</span>
+					</div>
+				</div>
+				<div class="p10 mb20 box">
+					<div class="title pb20">代码说明：</div>
+					<div class="border borderTop p10 pl25">
+						var hovertipTopTest=HoverTipView("hovertipTopTest","提示信息",{position:"top"});
+					</div>
+					<div class="p10 l25 border pl25">
+						var hovertipBottomTest=HoverTipView("hovertipBottomTest","提示信息",{
+							<div class="pl25">
+								position:"bottom",<br>
+								bgColor:"rgba(18,122,156,0.6)",<br>
+								borderColor:"rgba(18,122,156,1)"
+							</div>
+						});
+					</div>
+					<div class="p10 pl25">
+						触发展示：hovertipTopTest.show(2000)
+					</div>
+				</div>
+				<div class="p10 box">
+					<div class="title pb20">配置参数：</div>
+					<div class="gap">
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb">
+								<div>var hovertipTopTest=HoverTipView(_target,{</div>
+								<div class="zhushi">//_target可以是class,id,DOM</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">isHtml:false,</span></div>
+								<div class="zhushi">//是否支持DOM结构</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">bgColor:"rgba(0,0,0,0.8)",</span></div>
+								<div class="zhushi">//可自定义背景颜色</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">borderColor:"rgba(0,0,0,0.8)",</span></div>
+								<div class="zhushi">//可自定义边框颜色</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">color:"#ffffff",</span></div>
+								<div class="zhushi">//字体颜色</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">delayHideTime:300,</span></div>
+								<div class="zhushi">//延迟隐藏时间</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">autoShow:true,</span></div>
+								<div class="zhushi">//自动显示</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">autoHide:true,</span></div>
+								<div class="zhushi">//自动隐藏</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">maxWidth:150,</span></div>
+								<div class="zhushi">//最大宽度</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">radius:6,</span></div>
+								<div class="zhushi">//边框圆角值</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">position:"bottom",</span></div>
+								<div class="zhushi">//[top,left,right,bottom,auto]出现位置</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">zIndex:99999</span></div>
+								<div class="zhushi">//层级</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox">
+								<div>});</div>
+								<div></div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">.bgColor()</span></div>
+								<div class="zhushi">//获取或设置背景色</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">.borderColor()</span></div>
+								<div class="zhushi">//获取或设置边框颜色</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">.color()</span></div>
+								<div class="zhushi">//获取或者设置字体颜色</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">.delayHideTime()</span></div>
+								<div class="zhushi">//获取或者设置延迟隐藏时间</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">.zIndex()</span></div>
+								<div class="zhushi">//获取或设置层级</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">.show()</span></div>
+								<div class="zhushi">//显示</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">.hide()</span></div>
+								<div class="zhushi">//隐藏</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">.message()</span></div>
+								<div class="zhushi">//提示语言，可接受DOM结构</div>
+							</div>
+						</div>
+						<div class="bfb lh25">
+							<div class="leftrightBox bfb hoverBg">
+								<div class="pl25"><span class="shuxing">.remove()</span></div>
+								<div class="zhushi">//移除</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script>
+					var hovertipTopTest=HoverTipView("hovertipTopTest","提示信息",{position:"top"});
+					var hovertipBottomTest=HoverTipView("hovertipBottomTest","提示信息",{
+						position:"bottom",
+						bgColor:"rgba(18,122,156,0.6)",
+						borderColor:"rgba(18,122,156,1)"
+					});
+				</script>
+			</div>
+			<div id="tabbox" class="cadeBodyNode hide">
+				<div class="codeView pb10 mb10">
+					<span class="themeFontColor">TabView</span>用于选项卡切换，初始化后可直接使用。
+				</div>
+				<div class="leftrightBox">
+					<div class="pr10 inlineBox">
+						<div class="title">样例展示：</div>
+						<div id="tabViewbox">
+							<div class="TabTitleBox clearfix">
+								<div class="TabTitleView TabViewHover">文献</div>
+								<div class="TabTitleView">书籍</div>
+								<div class="TabTitleView">资料</div>
+							</div>
+							<div class="TabBobyBox">
+								<div class="TabBobyView">文献：建设中国特色新型智库，必须紧跟大数据时代的新形势，突出与大数据时代发展要求相适应的新功能，创新与大数据时代发展要求相匹配的方法论和研究工具。因此，党政智库建设要取得进一步的创新发展，必须要以大数据支撑科学咨询研究，以科学咨询支撑科学决策，以科学决策引领科学发展。</div>
+								<div class="TabBobyView hide">书籍：中国知网作为国内最早的大数据应用与知识管理服务企业，致力于知识信息服务近20年，近年来紧跟时代发展步伐，以增强政策供给为动力，开发专业化研究平台和工具，通过跨学科、跨单位、跨地域间协同合作，加强党政智库研究机构与政策研究部门以及与其他类型智库的协同等，面向各级党政机关、科研院所搭建了一系列专业智库服务平台，如“智库协同创新与成果管理平台”、“CNKI机构知识库”、“中国智库影响力评价系统”、“中国经济社会大数据研究平台”等，以智库建设质量和智库产品质量双提升为主线，从精细化、精准化、精致化的服务方向，提升智库服务能力，助力党政资政研究，更好地服务党委政府决策、支撑国家社会发展。</div>
+								<div class="TabBobyView hide">资料：会后我们将征集参会单位及代表的主题论文，对优秀论文产出单位和个人进行奖励，优秀会议论文将在中国知网以正式出版物形式出版。</div>
+							</div>
+						</div>
+					</div>
+					<div class="inlineBox">
+						<div class="title">说明：</div>
+						<div id="tabViewbox1">
+							<div class="TabTitleBox clearfix">
+								<div class="TabTitleView TabViewHover">Html结构</div>
+								<div class="TabTitleView">script脚本</div>
+							</div>
+							<div class="TabBobyBox">
+								<div class="TabBobyView">
+									<div class="tabviewHtml">
+										&lt;div id="tabViewbox1"&gt;<br>
+											<div class="pl25">&lt;div class="TabTitleBox clearfix"&gt;<br/></div>
+												<div class="pl45">&lt;div class="TabTitleView TabViewHover"&gt;文献&lt;/div&gt;<br/></div>
+												<div class="pl45">&lt;div class="TabTitleView"&gt;书籍&lt;/div&gt;<br/></div>
+												<div class="pl45">&lt;div class="TabTitleView"&gt;资料&lt;/div&gt;<br/></div>
+											<div class="pl25">&lt;/div&gt;<br/></div>
+											<div class="pl25">&lt;div class="TabBobyBox"&gt;<br/></div>
+												<div class="pl45">&lt;div class="TabBobyView"&gt;文献：建设中国特色&lt;/div&gt;<br/></div>
+												<div class="pl45">&lt;div class="TabBobyView hide"&gt;书籍：中国知网作&lt;/div&gt;<br/></div>
+												<div class="pl25">&lt;div class="TabBobyView hide"&gt;资料：会后我们将征集&lt;/div&gt;<br/></div>
+											&lt;/div&gt;<br/>
+									</div>
+								</div>
+								<div class="TabBobyView hide">
+									<div class="pl15">
+										var tabView1 = TabView("#tabViewbox1");
+									</div>
+									<div class="p10 redColor">
+										PS：如果使用简写的初始化方法，则必须保证所用各项className与样例中保持一致；如需自定义，则需在config中配置。
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="codeTip">
+					<div class="caption">代码说明：</div>
+					<div class="codeline box p10 ft12">
+						<div class="gap">
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>var tabView = TabView("#tabViewbox",{</div>
+									<div class="zhushi">//可直接简写为：var tabView = TabView("#tabViewbox");</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">titleClassName:"TabTitleView",</span></div>
+									<div class="zhushi">//选项卡标签的通用className</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">bodyClassName:"TabBobyView",</span></div>
+									<div class="zhushi">//选项卡内容的通用className</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">hoverClassName:"TabViewHover",</span></div>
+									<div class="zhushi">//选项卡当前选中项的className</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">callback:function(_index){}</span></div>
+									<div class="zhushi">//选中之后的回调</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>});</div>
+									<div></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.setIndex(_index)</span></div>
+									<div class="zhushi">//设置选中项，接收其索引值</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.getIndex()</span></div>
+									<div class="zhushi">//获取被选中项的索引值，没选中返回-1.</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script>
+					var tabView = TabView("#tabViewbox");
+					var tabView1 = TabView("#tabViewbox1");
+				</script>
+			</div>
+			<div id="publicMethodbox" class="cadeBodyNode hide">
+				<div class="codeView pb10 mb10">
+					此脚本库在原生对象上增加了常用方法，如 在String上增加trim方法，在Array上增加indexOf方法，在Date上增加formart方法...;例如：document.getElementById("box").trim();
+				</div>
+				<div class="publicMethodBox box">
+					<div class="title pb20">文本扩展方法：</div>
+					<div class="gap hoverBg lh25 leftrightBox bfb">
+						<div class="pl10"><span class="shuxing">.toNumber</span>(_defaultData,_fixed)</div>
+						<div class="zhushi pr10">//将此文本转化成数值型,_defaultData设置转化的默认值,如果this不能转化成数值，则结果为_defaultData,反之结果为this转化的数值;_fixed保留几位小数</div>
+					</div>
+					<div class="gap hoverBg lh25 leftrightBox bfb">
+						<div class="pl10"><span class="shuxing">.toInt</span>(_defaultData)</div>
+						<div class="zhushi pr10">//将此文本转化成整数,如果this不能转化成数值，则结果为_defaultData,反之结果为this转化的数值。</div>
+					</div>
+					<div class="gap hoverBg lh25 leftrightBox bfb">
+						<div class="pl10"><span class="shuxing">.trimL</span>()</div>
+						<div class="zhushi pr10">//删除左边空白</div>
+					</div>
+					<div class="gap hoverBg lh25 leftrightBox bfb">
+						<div class="pl10"><span class="shuxing">.trimR</span>()</div>
+						<div class="zhushi pr10">//删除右边空白</div>
+					</div>
+					<div class="gap hoverBg lh25 leftrightBox bfb">
+						<div class="pl10"><span class="shuxing">.trim</span>()</div>
+						<div class="zhushi pr10">//删除左、右两边空白</div>
+					</div>
+					<div class="gap hoverBg lh25 leftrightBox bfb">
+						<div class="pl10"><span class="shuxing">.toText</span>()</div>
+						<div class="zhushi pr10">//转化成纯文本</div>
+					</div>
+					<div class="gap hoverBg lh25 leftrightBox bfb">
+						<div class="pl10"><span class="shuxing">.toHtml</span>()</div>
+						<div class="zhushi pr10">//将文本转化成html</div>
+					</div>
+					<div class="gap hoverBg lh25 leftrightBox bfb">
+						<div class="pl10"><span class="shuxing">.charLength</span>()</div>
+						<div class="zhushi pr10">//获取中文长度，中文占用两个字符，英文占有1个字节</div>
+					</div>
+					<div class="gap hoverBg lh25 leftrightBox bfb">
+						<div class="pl10"><span class="shuxing">.subchar</span>(_length,_suffix)</div>
+						<div class="zhushi pr10">//截取文本，中文占用两个字符，英文占有1个字节,_length为截取长度，_suffix为被截取的部分被什么代替，如：.subchar(_length,"...")</div>
+					</div>
+				</div>
+				<div class="publicMethodBox mt20 box">
+					<div class="title pb20">数组扩展方法：</div>
+					<div class="gap hoverBg lh25 leftrightBox bfb">
+						<div class="pl10"><span class="shuxing">.indexOf</span>(_value)</div>
+						<div class="zhushi pr10">//返回_value在数组中的索引，没有则返回-1</div>
+					</div>
+					<div class="gap hoverBg lh25 leftrightBox bfb">
+						<div class="pl10"><span class="shuxing">.forEatch</span>(function(_child){})</div>
+						<div class="zhushi pr10">//使用方法：[1,2,3,4].forEatch(function(_child){alert(_child)})</div>
+					</div>
+
+				</div>
+				<div class="publicMethodBox mt20 box">
+					<div class="title pb20">日期扩展方法：</div>
+					<div class="gap hoverBg lh25 leftrightBox bfb">
+						<div class="pl10"><span class="shuxing">.format</span>(_format)</div>
+						<div class="zhushi pr10">//.format("yyyy-MM-dd hh:mm:ss")</div>
+					</div>
+				</div>
+			</div>
+			<div id="treebox" class="cadeBodyNode hide">
+				<div class="codeView pb10 mb10">
+					<span class="themeFontColor">TreeView</span>树组件，常用于层级结构管理。
+				</div>
+				<div class="p10 box">
+					<div class="title">样例展示：</div>
+					<div class="p10 clearfix">
+						<div class="mb10 pb20 inlineBox width50">
+							<div class="treeListBox inlineBox">
+								<div class="treeListBoxTitle">树组件</div>
+								<div id="treeTestDiv" style="width:200px; height:400px; background-color:#fff; overflow:hidden; border:1px solid #ddd;margin-right:50px;">
+								</div>
+							</div>
+							<div class="treeListBox inlineBox">
+								<div class="treeListBoxTitle">list组件</div>
+								<div id="treeTestDiv2" style="width:200px; height:400px; background-color:#fff; overflow:hidden; border:1px solid #ddd;">
+								</div>
+							</div>
+						</div>
+						<div class="pt10 inlineBox width50 treeListBox">
+							<div class="treeListBoxTitle">样例脚本：</div>
+							<div class="pl25" style="line-height:30px;">
+								var treeTest=TreeListView("treeTestDiv",{dragEvent:true});<br/>
+								var dir=treeTest.addDir("文件夹",{type:1});<br/>
+								dir.addDir("子文件夹",{type:1});<br/>
+								dir.addFile("子文件",{type:1});<br/>
+								dir=dir.addDir("子文件夹",{type:1});<br/>
+								dir.addFile("子文件",{type:1});<br/>
+								treeTest.addDir("文件夹",{type:1});
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="codeTip">
+					<div class="caption">代码说明：</div>
+					<div class="codeline box p10 ft12">
+						<div class="gap">
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>var treeTest=TreeListView(_target,{</div>
+									<div></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">lineHeight:30,</span></div>
+									<div class="zhushi">//行高</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">treeList:true,</span></div>
+									<div class="zhushi">//是一个树组件，不然就是个list组件</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">clickSelect:true,</span></div>
+									<div class="zhushi">//点击选中元素</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">fileCheckMode:true,</span></div>
+									<div class="zhushi">//文件check</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">dirCheckMode:true,</span></div>
+									<div class="zhushi">//目录check</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">showIcon:false,</span></div>
+									<div class="zhushi">//</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">checkCallback:function(_node,_checked,_data,_allCheckData){},</span></div>
+									<div class="zhushi">//this指向对象本省,_node指向当前选择元素本身,_checked为是否选中,_data为数据,_allCheckData为所有选中元素data</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">selectCallback:function(_node,_data){},</span></div>
+									<div class="zhushi">//this指向对象本省,_node指向当前选择元素本身,_data为数据</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">openStatusCallback:function (_node,_isOpen,_data) {}</span></div>
+									<div class="zhushi">//this指向对象本省,_node指向当前选择元素本身,_data为数据</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>});</div>
+									<div></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.getAllCheck()</span></div>
+									<div class="zhushi">//获取所有选中元素</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.getAllCheckData()</span></div>
+									<div class="zhushi">//获取所有选中元素的data</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.width()</span></div>
+									<div class="zhushi">//获取或者设置宽</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.height()</span></div>
+									<div class="zhushi">//获取或者设置高</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.appendTo(_target)</span></div>
+									<div class="zhushi">//_target可以是dom元素可以是id</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.addDir(_title,_data)</span></div>
+									<div class="zhushi">//添加一个文件夹</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.addFile(_title,_data)</span></div>
+									<div class="zhushi">//添加一个文件</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.getSelectNode()</span></div>
+									<div class="zhushi">//</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.getChildList()</span></div>
+									<div class="zhushi">//</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script>
+					var treeTest=TreeListView("treeTestDiv",{dragEvent:true});
+
+					var dir=treeTest.addDir("一班",{type:1});
+					dir.addDir("1组",{type:1});
+					dir.addDir("2组",{type:1});
+					dir.addDir("3组",{type:1});
+					dir.addFile("组外成员",{type:1});
+					dir=dir.addDir("4组",{type:1});
+					dir.addFile("4组成员a",{type:1});
+					dir.addFile("4组成员b",{type:1});
+					dir.addFile("4组成员c",{type:1});
+					treeTest.addDir("二班",{type:1});
+					dir=treeTest.addDir("三班",{type:1});
+					dir.addDir("1组",{type:1});
+					dir.addFile("组外成员",{type:1});
+					dir.addDir("2组",{type:1});
+					dir.addFile("组外成员",{type:1});
+					dir.addFile("组外成员",{type:1});
+					treeTest.addDir("四班",{type:1});
+					treeTest.addDir("五班",{type:1});
+					treeTest=TreeListView("treeTestDiv2",{treeList:false});
+					dir=treeTest.addFile("文件",{type:1});
+					dir=treeTest.addFile("文件",{type:1});
+					dir=treeTest.addFile("文件",{type:1});
+					dir=treeTest.addFile("文件",{type:1});
+					dir=treeTest.addFile("文件",{type:1});
+					dir=treeTest.addFile("文件",{type:1});
+				</script>
+			</div>
+			<div id="imagebase64box" class="cadeBodyNode hide">
+				<div class="codeView pb10 mb10">
+					<span class="themeFontColor">ImageBase64</span>  图片处理方法，将用户上传的图片等比例缩放至设定值（取图片中间位置);
+				</div>
+				<div class="leftrightBox box">
+					<div class="p10">
+						<div class="title">script脚本：</div>
+						<div class="p10">
+							<ul>
+								<div class="pl25">var baseImageArea=document.getElementById("baseImageArea");</div>
+								<div class="pl25">var imageBase64=ImageBase64(200,200);</div>
+								<div class="pl25">imageBase64.setCallback(function(_type,_message){</div>
+									<div class="pl45">switch(_type){</div>
+										<div class="pl45">case "success":</div>
+										<div class="pl55">baseImageArea.setAttribute("src",_message);</div>
+										<div class="pl45">}</div>
+										<div class="pl25">})</div>
+							</ul>
+						</div>
+						<div class="p10">
+							<button class="button ThemeButton" onclick="imageBase64.open()">试一下，选择图片</button>
+						</div>
+					</div>
+					<div class="p10">
+						<div class="title">图片预览：</div>
+						<div class="p10">
+							<img src="" alt="" id="baseImageArea">
+						</div>
+					</div>
+				</div>
+				<div class="codeContent bfb box p10 mt10">
+					<div class="title redColor">特殊说明：</div>
+					<div>
+						此对象提供丰富的回调函数，如无要求可不进行处理，其中error和success事件是必要的处理事件。
+					</div>
+				</div>
+				<script>
+					var baseImageArea=document.getElementById("baseImageArea");
+					var imageBase64=ImageBase64(200,200);
+					imageBase64.setCallback(function(_type,_message){
+						switch(_type){
+							case "success":
+								baseImageArea.setAttribute("src",_message);
+						}
+					})
+				</script>
+				<div class="codeTip">
+					<div class="caption">代码说明：</div>
+					<div class="codeline box p10 ft12">
+						<div class="gap">
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>var imageBase64 = ImageBase64(200,200);</div>
+									<div>//实例化</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">imageBase64.setCallback(function(_type,_message){</span></div>
+									<div class="zhushi"></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl35"><span class="shuxing">switch(_type){</span></div>
+									<div class="zhushi"></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">case "progress":</span></div>
+									<div class="zhushi">//读取文件过程中 注：_message为进度百分比，arguments[2]为已加载数据大小，arguments[3]为总大小</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">break;</span></div>
+									<div class="zhushi"></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">case "abort":</span></div>
+									<div class="zhushi">//已取消文件的读取操作 注：_message为进度百分比，arguments[2]为已加载数据大小，arguments[3]为总大小</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">break;</span></div>
+									<div class="zhushi"></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">case "complete":</span></div>
+									<div class="zhushi">//文件读取完毕</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">break;</span></div>
+									<div class="zhushi"></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">case "start":</span></div>
+									<div class="zhushi">//开始读取文件</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">break;</span></div>
+									<div class="zhushi"></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">case "abort":</span></div>
+									<div class="zhushi">//已取消文件的读取操作</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">break;</span></div>
+									<div class="zhushi"></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">case "error":</span></div>
+									<div class="zhushi">//文件读取失败</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">break;</span></div>
+									<div class="zhushi"></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">case "success":</span></div>
+									<div class="zhushi">//文件读取成功 注：message为base64URL,可直接放入图片的src</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl45"><span class="shuxing">break;</span></div>
+									<div class="zhushi"></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>}) </div>
+									<div></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">imageBase64.open();</span></div>
+									<div class="zhushi">//打开选图窗口</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.setFormat("image/png");</span></div>
+									<div class="zhushi">//设置编码格式，image/png、image/jpeg、image/webp</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.getFormat();</span></div>
+									<div class="zhushi">//获取编码格式，image/png、image/jpeg、image/webp</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.setEncoderOptions(0.92);</span></div>
+									<div class="zhushi">//获取压缩质量，当格式为image/jpeg、image/webp时有效，取值范围0~1</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">.getEncoderOptions();</span></div>
+									<div class="zhushi">//获取压缩质量</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="alertDom" style="width:100%; height:200px;display: none; padding:10px">
+				<div class="pb10">
+					<button type="button" class="Button ThemeButton ButtonHeightMin">新增</button>
+					<button type="button" class="Button ThemeButton ButtonHeightMin ml10">全选</button>
+					<button type="button" class="fr Button ThemeButtonLight ButtonHeightMin ml10">删除</button>
+				</div>
+				<div class="">
+					<table class="table" border="0" cellspacing="0" cellpadding="0" width="100%">
+						<tr>
+							<th width="30"><input type="checkbox" name="" value=""></th>
+							<th>姓名</th>
+							<th>职位名称</th>
+							<th>在职年限</th>
+							<th>性别</th>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="" value=""></td>
+							<td>王焕丽</td>
+							<td>前端开发</td>
+							<td>2年</td>
+							<td>女</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="" value=""></td>
+							<td>戴晓璐</td>
+							<td>市场经理</td>
+							<td>1年</td>
+							<td>女</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="" value=""></td>
+							<td>贾龙</td>
+							<td>产品总监</td>
+							<td>6年</td>
+							<td>男</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div id="ajaxplusbox" class="cadeBodyNode hide">
+				<div class="codeView pb10 mb10">
+					<span class="themeFontColor">AjaxPlus</span>封装ajax方法，把数据交换协议进行处理，使用时无需处理协议部分。
+				</div>
+				<div class="codeContent leftrightBox bfb box">
+					<div class="p10">
+						<div class="title">使用说明：</div>
+						<div class="p10">
+							<ul>
+								<li class="redColor">此方法依赖jQuery</li>
+								<li>常搭配loadingView使用</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="codeTip">
+					<div class="caption">代码说明：</div>
+					<div class="codeline box p10 ft12">
+						<div class="gap">
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>
+										var LoadingView=null;</div>
+									<div>声明LoadingView变量</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>AjaxPlus({ </div>
+									<div></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">url:'',</span></div>
+									<div class="zhushi">//请求数据的地址</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">data:{data:"csacsa"},</span></div>
+									<div class="zhushi">//传递的参数</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">errorMessage:"",</span></div>
+									<div class="zhushi">//发生错误时的提示信息，可以忽略，忽略则系统自动处理</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">beforeSend:function(){
+									LoadingView=new LoadingBox();
+								},</span></div>
+									<div class="zhushi">//创建并显示loadingbox</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">errorBefore:function(){},</span></div>
+									<div class="zhushi">//错误信息拦截，返回false系统不再进行处理</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">errorAfter:function(){},</span></div>
+									<div class="zhushi">//系统预处理错误提示结束后调用</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">success:function(_data){},</span></div>
+									<div class="zhushi">//数据页面加载成功</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">error:function(_xhr,_textStatus,_errorThrown){},</span></div>
+									<div class="zhushi">//一旦写了这个处理函数，errorBefore和errorAfter 都不会出发，需要自己处理错误信息</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">complete:function(_xhr,_success){
+									LoadingView.remove();
+								},</span></div>
+									<div class="zhushi">//不管ajax执行成功与否均调用此方法，并传递是否发生错误参数,并移除loadingView</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">loginError:function(){}，</span></div>
+									<div class="zhushi">//未登录的时候触发，返回false系统不会再继续处理错误信息</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">authorityError:function(){}</span></div>
+									<div class="zhushi">//没有权限的时候触发，返回false系统不会再继续处理错误信息</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>}) </div>
+									<div></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="checkbox" class="cadeBodyNode hide">
+				<div class="codeView pb10 mb10">
+					<span class="themeFontColor">CheckView</span>单选、复选框插件
+				</div>
+				<div class="p10 box">
+					<div class="title">样例展示：</div>
+					<div class="p10">
+						<div class="mb10">
+							<input type="checkbox" id="checkboxinput" checked value="1"><label for="checkboxinput">复选框</label>
+							<input type="checkbox" id="checkboxinput2" value="1"><label for="checkboxinput2">复选框</label>
+						</div>
+						<div class="border pb10">
+							<input type="radio" name="radioboxinput" id="radioboxinput1" value="1"><label for="radioboxinput1">单选框1</label>
+							<input type="radio" name="radioboxinput" checked id="radioboxinput2" value="2"><label for="radioboxinput2">单选框2</label>
+							<input type="radio" id="disableradioboxinput" disabled><label for="disableradioboxinput">禁止的单选框</label>
+						</div>
+						<div class="pt10 leftrightBox">
+							<div>样例脚本：CheckView.initAll();</div><div class="zhushi">//初始化全页面的单选框和复选框，可以不必实例化就拿出来单独使用；如果只是想初始化页面中某一部分的单选复选按钮，可以如下代码展示部分初始化方法。
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="codeContent bfb box p10 mt10">
+					<div class="title redColor">特殊说明：</div>
+					<div>
+						<span class="redColor">CheckView.initAll</span>(_element || _elementId);<span class="zhushi pl35">//可以一次性处理某个元素内所有radio和checkbox<br/></span>
+						如需对单个radio和checkbox进行处理 需使用<br/>
+						<span class="redColor">简写方法：</span>var checkbox=CheckView(xxx);      &nbsp;&nbsp;&nbsp;&nbsp;//可以是DOM元素或者id<br>
+
+						如需要传回调函数：<br/>
+						var checkbox=<span class="redColor">CheckView</span>({
+							<div class="pl35">target:xxx,
+							<br/>callback:function(_checked){
+								<br/><span class="zhushi pl35">//this指向当前对象</span>
+							<br/>}</div>
+						});
+
+
+					</div>
+				</div>
+				<div class="codeTip">
+					<div class="caption">代码说明：</div>
+					<div class="codeline box p10 ft12">
+						<div class="gap">
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>CheckView({ </div>
+									<div></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">target:[element|elementId],</span></div>
+									<div class="zhushi">//默认为null,可以指定，插入对象可以是dom元素也可以是id</div>
+								</div>
+							</div>
+							<!--div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">type:"checkbox",</span></div>
+									<div class="zhushi">//当target为null的时候创建元素类型</div>
+								</div>
+							</div-->
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">callback:function(_value){},</span></div>
+									<div class="zhushi">//设置回调函数，最终会被追加到callbackList中</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>}) </div>
+									<div></div>
+								</div>
+							</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getNode</span>()</div>
+							<div class="zhushi pr10">//返回调用此方法的target</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><spa     n class="shuxing">.getValue</span>()</div>
+							<div class="zhushi pr10">//返回调用此方法的target的value值</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.addCallback</span>(_v)</div>
+							<div class="zhushi pr10">//增加回调函数，接收一个函数，这个函数会被追加到callbackList数组中</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.deleteCallback</span>(_v)</div>
+							<div class="zhushi pr10">//删除回调函数_v,接收一个函数，这个函数会被从callbackList数组中删除</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.setSelected</span>(_v,_toCall)</div>
+							<div class="zhushi pr10">//设置被选中，_v值为true/false,_toCall值为true/false,为true时，执行被选中回调</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getSelected</span>()</div>
+							<div class="zhushi pr10">//获取是否被选中</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.setDisable</span>(_v)</div>
+							<div class="zhushi pr10">//设置不可用。_v值为true/false，为true时，不可用。</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getDisable</span>()</div>
+							<div class="zhushi pr10">//获取目标对象是否可用</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.update</span>()</div>
+							<div class="zhushi pr10">//某些选中状态变化后，需更新是调用</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.appendTo</span>(_target)</div>
+							<div class="zhushi pr10">//将接受值_targe追加到config.target中</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getDisable</span>()</div>
+							<div class="zhushi pr10">//获取目标对象是否可用</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getDisable</span>()</div>
+							<div class="zhushi pr10">//获取目标对象是否可用</div>
+						</div>
+					</div>
+				</div>
+				<script>
+					CheckView.initAll();
+				</script>
+			</div>
+			<div id="loadingbox" class="cadeBodyNode hide">
+				<div class="codeView pb10 mb10">
+					<span class="themeFontColor">LoadingView</span>显示加载框，默认追加到body中，也可追加到某个Dom元素或id元素中
+				</div>
+				<div id="loadingViewTarget" class="codeContent leftrightBox bfb box">
+					<div class="p10">
+						<div class="title">使用说明：</div>
+						<div class="p10">
+							<ul>
+								<li><span class="redColor">简写方式</span> var loadingView=LoadingView();<span class="zhushi pl10">//全屏Loading</span></li>
+								<li><span class="redColor">简写方式</span> var loadingView=LoadingView("userListDiv"); <span class="zhushi pl10">//插入到Id为"userListDiv"的Dom元素中</span></li>
+								<li><span class="redColor">简写方式</span> var loadingView=LoadingView(userListDom); <span class="zhushi pl10">//插入到Dom元素中</span></li>
+								<li><span class="redColor">简写方式</span> var loadingView=LoadingView(2000); <span class="zhushi pl10">//两秒消失</span></li>
+								<li>插入到某个元素中，默认为body</li>
+								<li>延时销毁（隐藏）</li>
+								<li>改变背景色</li>
+							</ul>
+						</div>
+					</div>
+					<div class="p10">
+						<div class="title">功能说明：</div>
+						<div class="p10">
+							<div>var loadingView=LoadingView();<span class="textLink fr" onClick="LoadingView(2000)">试一试</span></div>
+							<div>var loadingView=LoadingView("loadingViewTarget");<span class="textLink fr" onClick="LoadingView({target:'loadingViewTarget',delayTime:2000})">试一试</span></div>
+							<div>var loadingView=LoadingView(3000);<span class="textLink fr" onClick="LoadingView(3000)">试一试</span></div>
+							<div>var loadingView=LoadingView({bgColor:"rgba(0,0,0,0.3)"});<span class="textLink fr" onClick="LoadingView({bgColor:'rgba(0,0,0,0.3)',delayTime:2000})">试一试</span></div>
+						</div>
+					</div>
+				</div>
+				<div class="codeTip">
+					<div class="caption">代码说明：</div>
+					<div class="codeline box p10 ft12">
+						<div class="gap">
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>LoadingView({ </div>
+									<div></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">target:"body",</span></div>
+									<div class="zhushi">//插入对象可以是dom元素可以是id</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">show:true,</span></div>
+									<div class="zhushi">//默认直接显示</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">delayTime:0,</span></div>
+									<div class="zhushi">//延迟消失时间(0为不消失),默认两秒后消失</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">bgColor:"rgba(255,255,255,0.5)",</span></div>
+									<div class="zhushi">//设置背景色，16进制颜色需带有符号"#"</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">delayTimeEndDispose:(true)</span></div>
+									<div class="zhushi">//定时结束后自动销毁，false则为隐藏</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>}) </div>
+									<div></div>
+								</div>
+							</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.bgColor</span>("rgba(255,255,255,0.5)")</div>
+							<div class="zhushi pr10">//设置背景色，可设置 rgba 颜色</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.show</span>()</div>
+							<div class="zhushi pr10">//显示</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.hide</span>()</div>
+							<div class="zhushi pr10">//隐藏</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.delayHide</span>("1000")</div>
+							<div class="zhushi pr10">//延迟消失时间(0为不消失),默认两秒后消失，接收毫秒值</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.delayTimeEndDispose</span>(true)</div>
+							<div class="zhushi pr10">//定时结束后自动销毁，false则为隐藏</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.remove</span>()</div>
+							<div class="zhushi pr10">//销毁自身，销毁后将不能再对此对象进行操作</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="scrollbox" class="cadeBodyNode hide">
+				<div class="codeView pb10 mb10">
+					<span class="themeFontColor">ScrollView</span>滚动条组件用于替代原生滚动条插件，可以通过配置定制滚动条样式。
+				</div>
+				<div class="codeContent leftrightBox bfb box">
+					<div class="p10">
+						<div class="title">HTML结构：</div>
+						<div class="code ft14">
+							&lt;div id="scrollView" class="scrollView" style="width: 200px"&gt;
+							<div class="ml25"> &lt;div class="scrollBody ml25"&gt; <br/> 很多艰辛，并非来自艰辛本身，而是源于我们突破艰辛的错误方法
+								<br> 一辆车陷入泥潭里，动弹不得。车里下来两个人推车，两人你看看我，我看看你，觉得人手太少，把司机也叫下来推车。三人死命推车，却无法推动，车仍困在泥潭里。 &lt;/div&gt;
+								<br></div> &lt;/div&gt;<br> &lt;/div&gt;<br>
+							<span class="redColor">&lt;!--滚动条会加给选中元素的第一个div子元素--&gt;</span>
+						</div>
+					</div>
+					<div class="p10">
+						<div class="title">样例：</div>
+						<div id="scrollViewFrame" style="height:165px;overflow: hidden;margin-top:10px;border:1px solid #e5e5e5;border-radius:6px; ">
+							<div class="p10">
+								&nbsp;&nbsp;&nbsp;&nbsp;很多艰辛，并非来自艰辛本身，而是源于我们突破艰辛的错误方法<br> 一辆车陷入泥潭里，动弹不得。车里下来两个人推车，两人你看看我，我看看你，觉得人手太少，把司机也叫下来推车。三人死命推车，却无法推动，车仍困在泥潭里。
+								<br> &nbsp;&nbsp;&nbsp;&nbsp;很多艰辛，并非来自艰辛本身，而是源于我们突破艰辛的错误方法
+								<br> 一辆车陷入泥潭里，动弹不得。车里下来两个人推车，两人你看看我，我看看你，觉得人手太少，把司机也叫下来推车。三人死命推车，却无法推动，车仍困在泥潭里。
+								<br> &nbsp;&nbsp;&nbsp;&nbsp;很多艰辛，并非来自艰辛本身，而是源于我们突破艰辛的错误方法
+								<br> 一辆车陷入泥潭里，动弹不得。车里下来两个人推车，两人你看看我，我看看你，觉得人手太少，把司机也叫下来推车。三人死命推车，却无法推动，车仍困在泥潭里。
+								<br> &nbsp;&nbsp;&nbsp;&nbsp;很多艰辛，并非来自艰辛本身，而是源于我们突破艰辛的错误方法
+								<br> 一辆车陷入泥潭里，动弹不得。车里下来两个人推车，两人你看看我，我看看你，觉得人手太少，把司机也叫下来推车。三人死命推车，却无法推动，车仍困在泥潭里。
+								<br> &nbsp;&nbsp;&nbsp;&nbsp;很多艰辛，并非来自艰辛本身，而是源于我们突破艰辛的错误方法
+								<br> 一辆车陷入泥潭里，动弹不得。车里下来两个人推车，两人你看看我，我看看你，觉得人手太少，把司机也叫下来推车。三人死命推车，却无法推动，车仍困在泥潭里。
+								<br> &nbsp;&nbsp;&nbsp;&nbsp;很多艰辛，并非来自艰辛本身，而是源于我们突破艰辛的错误方法
+								<br> 一辆车陷入泥潭里，动弹不得。车里下来两个人推车，两人你看看我，我看看你，觉得人手太少，把司机也叫下来推车。三人死命推车，却无法推动，车仍困在泥潭里。
+								<br> &nbsp;&nbsp;&nbsp;&nbsp;很多艰辛，并非来自艰辛本身，而是源于我们突破艰辛的错误方法
+								<br> 一辆车陷入泥潭里，动弹不得。车里下来两个人推车，两人你看看我，我看看你，觉得人手太少，把司机也叫下来推车。三人死命推车，却无法推动，车仍困在泥潭里。
+								<br>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="codeContent bfb box p10 mt10">
+					<div class="title redColor">特殊说明：</div>
+					<div>
+						配置对象中，调整gap的值可以更改滚动一次鼠标滑动的距离。
+					</div>
+				</div>
+				<div class="codeTip">
+					<div class="caption">代码说明：</div>
+					<div class="codeline box p10 ft12">
+						<div class="gap">
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>ScrollView({ </div>
+									<div></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">target:[element|elementId],</span></div>
+									<div class="zhushi">//插入对象可以是dom元素可以是id</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">margin:[0,0,0,"aoto"],</span></div>
+									<div class="zhushi">//滚动条的位置</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">width:10,</span></div>
+									<div class="zhushi">//滚动条的宽度</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing redColor">gap:10,</span></div>
+									<div class="zhushi">//鼠标滚轮滚动一次，走过的距离</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">type:"vertical",</span></div>
+									<div class="zhushi">//[horizontal/vertical]=[纵向/竖向] 目前只支持竖向</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">minHeight:10</span></div>
+									<div class="zhushi">//最小高度</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>}) </div>
+									<div></div>
+								</div>
+							</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.setMargin</span>()</div>
+							<div class="zhushi pr10">//设置边距，接收值为长度为4的数组，顺序为上、右、下、左</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.update</span>()</div>
+							<div class="zhushi pr10">//更新试图</div>
+						</div>
+					</div>
+				</div>
+				<script language="javascript">
+					ScrollView("scrollViewFrame");
+				</script>
+			</div>
+			<div id="requestbox" class="cadeBodyNode hide">
+				<div class="codeView pb10 mb10">
+					<span class="themeFontColor">RequestUrl</span>用于获取URL中的参数。
+				</div>
+				<div class="codeContent bfb box p10">
+					<div class="title">使用说明：</div>
+					<div>
+						var requestUrl=RequestUrl([url]);<span class="zhushi pl25">//创建对象（无new构造）,[url]为可选参数，默认为当前页面URL</span><br> 例：
+						<br> var requestUrl=RequestUrl("http://baidu.com?id=98&key=%E4%BD%A0%E5%A5%BD");<span class="zhushi pl25">//创建对象，参数可为空，默认为document.location</span><br> requestUrl.get("id");
+						<span class="zhushi pl25">//获取id的值，返回98</span><br> requestUrl.getString("key");
+						<span class="zhushi pl25">//获取key的值,同requestUrl.get，返回%E4%BD%A0%E5%A5%BD</span><br> requestUrl.getInt("id",0);
+						<span class="zhushi pl25">//获取id的值，返回整数类型的返回值：98</span><br> requestUrl.getUnescape("key","123456");
+						<span class="zhushi pl25">//获取key的值并进行解码，返回：你好</span><br> 注： 也可使用简写方式调用,如：requestUrl.id、requestUrl.key<span class="zhushi pl25">//此方法使用直接获取对象上的值，如果url上不存在此属性，则返回undefined</span>
+					</div>
+				</div>
+				<div class="codeContent bfb box p10 mt10">
+					<div class="title redColor">特殊说明：</div>
+					<div>
+						也可使用简写方式调用,如：<br> requestUrl.id、requestUrl.key
+						<span class="zhushi pl25">//此方法使用直接获取对象上的值，如果url上不存在此属性，则返回undefined</span>
+					</div>
+				</div>
+				<div class="codeTip">
+					<div class="caption">代码说明：</div>
+					<div class="codeline box p10 ft12">
+						<div class="gap">
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>RequestUrl(</div>
+									<div></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">[url]</span></div>
+									<div class="zhushi">//[url]为可选参数，默认为当前页面URL，即：document.location</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>)</div>
+									<div></div>
+								</div>
+							</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.get</span>("key","")</div>
+							<div class="zhushi pr10">//获取name为key的内容，第二个参数是当key不存在返回的默认值</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getString</span>("key","")</div>
+							<div class="zhushi pr10">//同.get方法</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getInt</span>("key",1)</div>
+							<div class="zhushi pr10">//获取key的值,第一个是key，第二个参数是当key不存在返回的默认值</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getUnescape</span>("key","")</div>
+							<div class="zhushi pr10">//获取解码之后的key值</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="alertbox" class="cadeBodyNode hide">
+				<div class="codeView pb10 mb10">
+					<span class="themeFontColor">AlertView</span>用于替换原生alert功能，并在原有功能基础上添加了扩展，支持简写方式及扩展方式。
+				</div>
+				<table class="box" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr>
+							<td class="alignTop">
+								<div class="p10">
+									<div><button class="button ThemeButton" onClick="AlertView('信息提示')">试一试</button></div>
+									<div class="p10 mt10 lh25">
+										<div class="border pb10 mb10">创建一个简写形式的信息框</div>
+										<span class="shuxing">AlertView</span>("信息提示")
+										<div class="border pb10"></div>
+										<div class="border pb10 mb10 pt10">创建一个html信息框</div>
+										<span class="textLink" onClick="AlertView({message:'真理惟一可靠的标准就是永远自相符合。 <span style=color:#e51748>—— 欧文</soan>',isHtml:true})">试一试</span>
+									</div>
+								</div>
+							</td>
+							<td class="alignTop">
+								<div class="p10">
+									<div><button class="button ThemeButton" onClick="AlertView({message:'信息提示',buttons:{'确定':function(){TipView('点击了确定按钮');},'取消':function(){TipView('点击了取消按钮');}}})">试一试</button></div>
+									<div class="p10 mt10 lh25">
+										<div class="border pb10 mb10">创建一个具有多个带有回调按钮的信息框</div>
+										<span class="shuxing">AlertView</span>({<br> &nbsp;&nbsp;message:"信息提示",
+										<br> &nbsp;&nbsp;buttons:{
+										<br> &nbsp;&nbsp;&nbsp;&nbsp;"确定":function(){
+										<span class="shuxing">TipView</span>("点击了确定按钮")},<br> &nbsp;&nbsp;&nbsp;&nbsp;"取消':function(){
+										<span class="shuxing">TipView</span>("点击了取消按钮")}<br> &nbsp;&nbsp;}
+										<br> })
+									</div>
+								</div>
+							</td>
+							<td class="alignTop">
+								<div class="p10">
+									<div><button class="button ThemeButton" onClick="AlertView({messagePadding:'0',message:document.getElementById('alertDom'),buttons:{'确定':null,'取消':null},buttonsAlign:'center',showTitle:true,showClose:true,classNames:['ThemeButton','ThemeButtonAlert']});">试一试</button></div>
+									<div class="p10 mt10 lh25">
+										<div class="border pb10 mb10">创建嵌入了dom对象的信息框,并显示出标题栏</div>
+										AlertView({<br> &nbsp;&nbsp;message:document.getElementById("alertDom"),
+										<br> &nbsp;&nbsp;buttonsAlign:"center",
+										<br> &nbsp;&nbsp;showTitle:true
+										<br> &nbsp;&nbsp;showClose:true
+										<br> });
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="bfb box mt20 p10">
+					<div class="title">支持三种内置的按钮样式，分别为：</div>
+					<div class="alertViewButtonStyle">
+						<div class="inlineBox">
+							<div class="pl25 mt10">.ThemeButton</div>
+							<div class="ThemeButton mt10" style="width:80px;margin-left:30px;text-align:center;">确定</div>
+						</div>
+						<div class="inlineBox">
+							<div class="pl25 mt10">.ThemeButtonAlert</div>
+							<div class="AlertViewButton ThemeButtonAlert mt10 ml10" style="text-align:center;width:80px;margin-left: 50px;">删除</div>
+						</div>
+						<div class="inlineBox">
+							<div class="pl25 mt10">.ThemeButtonLight</div>
+							<div class="ThemeButtonLight mt10" style="text-align:center;width:80px;margin-left: 50px;">取消</div>
+						</div>
+					</div>
+				</div>
+				<div class="codeTip">
+					<div class="caption">代码说明：</div>
+					<div class="codeline box p10 ft12">
+						<div class="gap">
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>AlertView({ </div>
+									<div></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">width:"500px",</span></div>
+									<div class="zhushi">//宽</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">caption:"信息提示",</span></div>
+									<div class="zhushi">//弹框的标题</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">showTitle:false,</span></div>
+									<div class="zhushi">//是否显示弹框标题，默认为true，表示显示</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">showClose:false,</span></div>
+									<div class="zhushi">//是否显示关闭弹框按钮</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">message:"",</span></div>
+									<div class="zhushi">//提示信息正文</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">messagePadding:"40px 20px",</span></div>
+									<div class="zhushi">//内边距大小</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">messageAlign:"left",</span></div>
+									<div class="zhushi">//信息正文对齐方式</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">buttonsAlign:"right",</span></div>
+									<div class="zhushi">//弹框按钮对齐方式</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">isHtml:false,</span></div>
+									<div class="zhushi">//消息是否为html，默认值：false</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">show:true,</span></div>
+									<div class="zhushi">//true为显示</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">classNames:["ThemeButton","ThemeButtonLight"],</span></div>
+									<div class="zhushi">//按钮样式主题风格</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">buttons:{
+											"确定":function(){}
+										},</span>
+									</div>
+									<div class="zhushi">//每个按钮功能及其回调，多个以逗号隔开</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">callback:function(_type){}</span></div>
+									<div class="zhushi">//回调函数，监听三个事件：show/hide/remove,接收参数也是这三个</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>}) </div>
+									<div></div>
+								</div>
+							</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.width</span>("#000000")</div>
+							<div class="zhushi pr10">//设置弹框宽</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.showTitle</span>()</div>
+							<div class="zhushi pr10">//显示标题</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.hideTitle</span>()</div>
+							<div class="zhushi pr10">//隐藏标题</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.caption</span>("提示信息")</div>
+							<div class="zhushi pr10">//设置弹框标题内容</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.message</span>（"您确定要删除此条信息？"）</div>
+							<div class="zhushi pr10">//弹框正文</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.messageAlign</span>（"center"）</div>
+							<div class="zhushi pr10">//弹框正文对齐方式</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.buttonsAlign</span>（"right"）</div>
+							<div class="zhushi pr10">//弹框按钮对齐方式</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.addButton</span>({"name":"增加按钮","callback":function(){}})</div>
+							<div class="zhushi pr10">//接收一个对象</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.show</span>()</div>
+							<div class="zhushi pr10">//显示弹框</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.showClose</span>()</div>
+							<div class="zhushi pr10">//显示弹框关闭按钮</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.hide</span>()</div>
+							<div class="zhushi pr10">//隐藏弹框</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.hideClose</span>()</div>
+							<div class="zhushi pr10">//隐藏弹框关闭按钮</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.remove</span>()</div>
+							<div class="zhushi pr10">//销毁自身，销毁后将不能再对此对象进行操作</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="tipbox" class="cadeBodyNode hide">
+				<div class="codeView pb10">
+					<button class="button mr10" onClick="TipView({message:'从上边弹出',position:'top'})">从上边弹出</button>
+					<button class="button mr10" onClick="TipView({message:'从中间弹出',position:'center'})">从中间弹出</button>
+					<button class="button mr10" onClick="TipView({message:'从底部弹出',position:'bottom'})">从底部弹出</button>
+					<button class="button mr10" onClick="tipOk()">成功提示</button>
+					<button class="button mr10" onClick="topAlert()">警告提示</button>
+					<button class="button mr10" onClick="tipError()">错误提示</button>
+					<script>
+						function tipOk(){
+							TipView({message:"<div class='Icon TipOk'></div>设置成功",isHtml:true,position:'center',bgColor:'#fff',color:'#444'});
+						}
+						function topAlert(){
+							TipView({message:"<div class='Icon TipAlert'></div>警告提示",isHtml:true,position:'center',bgColor:'#fff',color:'#444'});
+						}
+						function tipError(){
+							TipView({message:"<div class='Icon TipError'></div>错误提示",isHtml:true,position:'center',bgColor:'#fff',color:'#444'});
+						}
+					</script>
+				</div>
+				<div class="codeContent leftrightBox bfb box">
+					<div class="p10">
+						<div class="title">使用说明：</div>
+						<div class="p10">
+							<div>TipView("消息提示"); <span class="themeFontColor">//从底部弹出提示消息</span>
+								<span class="textLink fr" onClick="TipView('消息提示')">试一试</span></div>
+							<div>TipView({message:"消息提示",bgColor:"#e51748"}); <span class="themeFontColor">//改变背景色</span>
+								<span class="textLink fr" onClick="TipView({message:'时间是一切财富中最宝贵的财富。 —— 德奥弗拉斯多',bgColor:'#e51748'})">试一试</span></div>
+							<div>TipView({message:"消息提示",delayTime:1000}); <span class="themeFontColor">//弹出1秒后消失</span>
+								<span class="textLink fr" onClick="TipView({message:'消息提示',delayTime:1000})">试一试</span></div>
+							<div>TipView({message:"消息&lt;span style="color:coral"&gt;提示&lt;/span&gt;",isHtml:true});
+								<span class="themeFontColor"><br>//显示为html</span>
+								<span class="textLink fr" onClick="TipView({message:'消息<span style=color:coral>提示</span>',isHtml:true})">试一试</span>
+							</div>
+						</div>
+					</div>
+					<div class="p10">
+						<div class="title">功能说明：</div>
+						<div class="p10">
+							<ul>
+								<li>设置提示消息</li>
+								<li>设置弹窗位置 取值范围[top|center|bottom]</li>
+								<li>设置延时消失时间(0为不消失),默认两秒后消失</li>
+								<li>设置背景颜色</li>
+								<li>设置文字颜色</li>
+								<li>设置显示消息提示内容为html格式</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="caption">成功/警告/错误提示代码展示：</div>
+				<div class="codeTip box bfb p10">
+					<div class="">
+						<div class="pt10 clearfix">
+							<div class="bfb lh30">
+								<div class="inlineBox"><span class="shuxing">TipView</span>({message:"&lt;div class='Icon TipOk'&gt;&lt;/div&gt;设置成功",isHtml:true,position:'center',bgColor:'#fff',color:'#444'});</div>
+								<span class="textLink inlineBox fr" onClick="tipOk()">试一试</span>
+							</div>
+							<div class="bfb lh30">
+								<div class="inlineBox"><span class="shuxing">TipView</span>({message:"&lt;div class='Icon TipAlert'&gt;&lt;/div&gt;警告提示",isHtml:true,position:'center',bgColor:'#fff',color:'#444'});</div>
+								<span class="textLink inlineBox fr" onClick="topAlert()">试一试</span>
+							</div>
+							<div class="bfb lh30">
+								<div class="inlineBox"><span class="shuxing">TipView</span>({message:"&lt;div class='Icon TipError'&gt;&lt;/div&gt;错误提示",isHtml:true,position:'center',bgColor:'#fff',color:'#444'});</div>
+								<span class="textLink inlineBox fr" onClick="tipError()">试一试</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="codeTip clearfix">
+					<div class="caption">代码说明：</div>
+					<div class="codeline box p10 ft12">
+						<div class="gap">
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>TipView({</div>
+									<div></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">message</span>:"信息提示",</div>
+									<div class="zhushi">//消息提示内容，可接受DOM</div>
+								</div>
+							</div>
+							<div class="bfb lh25 hoverBg">
+								<div class="leftrightBox bfb">
+									<div class="pl25"><span class="shuxing">isHtml</span>:[true | false],</div>
+									<div class="zhushi">//消息是否为html，默认值：false</div>
+								</div>
+							</div>
+							<div class="bfb lh25 hoverBg">
+								<div class="leftrightBox bfb">
+									<div class="pl25"><span class="shuxing">bgColor</span>:"rgba(0,0,0,0.8)",</div>
+									<div class="zhushi">//设置背景色，16进制颜色需带有符号"#"</div>
+								</div>
+							</div>
+							<div class="bfb lh25 hoverBg">
+								<div class="leftrightBox bfb">
+									<div class="pl25"><span class="shuxing">color</span>:"#ffffff",</div>
+									<div class="zhushi">//设置背景颜色</div>
+								</div>
+							</div>
+							<div class="bfb lh25 hoverBg">
+								<div class="leftrightBox bfb">
+									<div class="pl25"><span class="shuxing">delayTime</span>:2000,</div>
+									<div class="zhushi">//延迟消失时间</div>
+								</div>
+							</div>
+							<div class="bfb lh25 hoverBg">
+								<div class="leftrightBox bfb">
+									<div class="pl25"><span class="shuxing">position</span>:["top"|"center"|"bottom"]</div>
+									<div class="zhushi">//设置从什么位置弹出，默认值："bottom"</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>})</div>
+									<div></div>
+								</div>
+							</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.bgColor</span>("#000000")</div>
+							<div class="zhushi pr10">//设置背景色，可设置 rgba 颜色</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.color</span>("#ffffff")</div>
+							<div class="zhushi pr10">//获取文字颜色</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.delayTime</span>(3000)</div>
+							<div class="zhushi pr10">//设置延迟消失时间，单位：毫秒</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.hide</span>()</div>
+							<div class="zhushi pr10">//隐藏</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.show</span>()</div>
+							<div class="zhushi pr10">//显示</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.message</span>("消息提示",false)</div>
+							<div class="zhushi pr10">//设置消息提示内容及是否为html</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.remove</span>()</div>
+							<div class="zhushi pr10">//销毁自身，销毁后将不能再对此对象进行操作</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="selectbox" class="cadeBodyNode hide">
+				<div class="codeView pb10">
+					移动一个div需绑定在哪几个元素上？
+					<div id="selectView" class="selectView" tip="请选择" style="width: 200px">
+						<option value="1">div body div</option>
+						<option value="2">div div div</option>
+						<option value="3">div body body</option>
+						<option value="4">div body div</option>
+					</div>
+
+					<div id="selectView2" class="selectView" tip="请选择" style="width: 200px">
+						<option value="1">div body div</option>
+						<option value="2">div div div</option>
+						<option value="3">div body body</option>
+						<option value="4">div body div</option>
+					</div>
+					<span class="pl10">你选中了：</span><span id="selectedNode" class="themeFontColor">---</span>
+				</div>
+				<div class="codeView pb10">
+					<button class="button mr10" onClick="selectView.addOption(String(Math.random()).substr(-8),String(Math.random()).substr(-3));;TipView('已插入')">插入一项</button>
+					<button class="button mr10" onClick="selectView.addOption(String(Math.random()).substr(-8),String(Math.random()).substr(-3),true,true)">插入一项并选中</button>
+					<button class="button mr10" onClick="selectView.deleteForIndex(0);TipView('已删除第一项')">删除第一项</button>
+					<button class="button mr10" onClick="selectView.selectForIndex(1,true);">选中第二项</button>
+					<button class="button mr10" onClick="selectView.clearAll();TipView('已删除全部')">删除全部</button>
+					<button class="button mr10" onClick="selectView.setDefaultStatus()">设置默认状态</button>
+				</div>
+				<div class="leftrightBox bfb box">
+					<div class="codeContent p10">
+						<div class="title">html结构：</div>
+						<div class="code ft14">
+							&lt;div id="selectView" class="selectView" tip="请选择" style="width: 200px"&gt;
+							<div class="ml25">&lt;option value="1"&gt;div body div&lt;/option&gt;<br> &lt;option value="2"&gt;div div div&lt;/option&gt;<br> &lt;option value="3"&gt;div body body&lt;/option&gt;<br> &lt;option value="4"&gt;div body div&lt;/option&gt;</div> &lt;/div&gt;<br> &lt;!--
+							<div class="ml25">
+								tip代表没有选择任何选项时的默认值，option标签中 value 代表选项data<br> &lt;option value="2"&gt;选项文本 &lt;/option&gt;
+							</div>
+							--&gt;
+						</div>
+					</div>
+					<div class="codeContent p10">
+						<div class="title">
+							JS代码：
+						</div>
+						<div class="code ft14">
+							var <span class="themeFontColor">selectView</span>=<span class="themeFontColor">SelectView</span>({<br>
+							<div class="ml25">
+								<span class="shuxing">target</span>:"selectView",<br>
+								<span class="shuxing">width</span>:"auto",<br>
+								<span class="shuxing">height</span>:"auto",<br>
+								<span class="shuxing">defaultTitle</span>:"请选择",<br>
+								<span class="shuxing redColor">checkMode</span>:false,<br>
+								<span class="shuxing">zIndex</span>:100,<br>
+								<span class="shuxing">callback</span>:function(_data,_caption){<br> //回调方法
+								<br> }
+							</div>
+							});<br>
+						</div>
+					</div>
+				</div>
+				<div class="codeContent bfb box p10 mt10">
+					<div class="title redColor">特殊说明：</div>
+					<div>
+						checkMode设置为true则下拉框为复选模式，回调数据将以逗号分隔。
+					</div>
+				</div>
+				<div class="codeTip">
+					<div class="caption">代码说明：</div>
+					<div class="codeline box p10 ft12">
+						<div class="gap">
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>var selectView=SelectView({</div>
+									<div></div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox bfb hoverBg">
+									<div class="pl25"><span class="shuxing">target</span>:"selectView",</div>
+									<div class="zhushi">//target取值[element的id | Dom元素 | null]<br> 取值为null时会创建一个对象，需使用appendTo()插入到目标对象中
+									</div>
+								</div>
+							</div>
+							<div class="bfb lh25 hoverBg">
+								<div class="leftrightBox bfb">
+									<div class="pl25"><span class="shuxing">width</span>:["auto" | "250px"],</div>
+									<div class="zhushi">//可以通过代码设置宽度，也可以通过css覆盖设置宽度</div>
+								</div>
+							</div>
+							<div class="bfb lh25 hoverBg">
+								<div class="leftrightBox bfb">
+									<div class="pl25"><span class="shuxing">height</span>:["auto" | "35px"],</div>
+									<div class="zhushi">//可以通过代码设置高度，也可以通过css覆盖设置宽度</div>
+								</div>
+							</div>
+							<div class="bfb lh25 hoverBg">
+								<div class="leftrightBox bfb">
+									<div class="pl25"><span class="shuxing">defaultTitle</span>:"请选择",</div>
+									<div class="zhushi">//未选中任何元素时显示的文本，也可在div上添加tip属性覆盖此值</div>
+								</div>
+							</div>
+							<div class="bfb lh25 hoverBg">
+								<div class="leftrightBox bfb">
+									<div class="pl25"><span class="shuxing redColor">checkMode</span>:false,</div>
+									<div class="zhushi redColor">//是否多选</div>
+								</div>
+							</div>
+							<div class="bfb lh25 hoverBg">
+								<div class="leftrightBox bfb">
+									<div class="pl25"><span class="shuxing">zIndex</span>:100,</div>
+									<div class="zhushi">//下拉框Z序层级</div>
+								</div>
+							</div>
+							<div class="bfb lh25 hoverBg">
+								<div class="leftrightBox bfb">
+									<div class="pl25"><span class="shuxing">callback</span>:function(_caption,_data){}</div>
+									<div class="zhushi">//回调函数，this指向下拉框对象，_caption为选中元素标题，_data为数据对象</div>
+								</div>
+							</div>
+							<div class="bfb lh25">
+								<div class="leftrightBox">
+									<div>})</div>
+									<div></div>
+								</div>
+							</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.setTitle</span>("请选择")</div>
+							<div class="zhushi pr10">//设置标题，当选择了子项后会被覆盖</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getTitle</span>()</div>
+							<div class="zhushi pr10">//获取标题，如果要获取选中元素标题请使用 getSelectedTitle</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getSelectedTitle</span>()</div>
+							<div class="zhushi pr10">//获取选中项目标题，建议使用getDefaultStatus判断是否有选中值</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getSelectedData</span>()</div>
+							<div class="zhushi pr10">//获取选中项目值，建议使用getDefaultStatus判断是否有选中值</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.addOption</span>("选项","值")</div>
+							<div class="zhushi pr10">//添加一个选项</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getSelectedIndex</span>()</div>
+							<div class="zhushi pr10">//获取选中元素索引，未选中返回-1</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.selectForIndex</span>(2)</div>
+							<div class="zhushi pr10">//根据一个index索引选中一项</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.selectForData</span>("值")</div>
+							<div class="zhushi pr10">//根据一个值选中某一子项</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.cancelSelectForIndex</span>(2)</div>
+							<div class="zhushi pr10">//根据一个索引取消选中某一子项</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.cancelSelectForData</span>("值")</div>
+							<div class="zhushi pr10">//根据一个值取消选中某一子项</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.cancelSelectForIndex</span>(index)</div>
+							<div class="zhushi pr10">//取消选中索引为index的那一项</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.cancelSelectForData</span>(data)</div>
+							<div class="zhushi pr10">//取消选中项目值为data的那一项</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.deleteForIndex</span>(3)</div>
+							<div class="zhushi pr10">//根据一个index索引删除某一子项</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.deleteForData</span>("值")</div>
+							<div class="zhushi pr10">//根据一个值删除某一子项</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.clearAll</span>()</div>
+							<div class="zhushi pr10">//清空所有选项</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.setDefaultStatus</span>()</div>
+							<div class="zhushi pr10">//设置为默认什么都没选中的状态</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getDefaultStatus</span>()</div>
+							<div class="zhushi pr10">//是否有选中某项，选中返回true，未选中返回false</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.hideBody</span>()</div>
+							<div class="zhushi pr10">//收回下拉框</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.setCallback</span>(function(_title,_data){})</div>
+							<div class="zhushi pr10">//设置回调函数</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.getCallback</span>()</div>
+							<div class="zhushi pr10">//返回回调函数</div>
+						</div>
+						<div class="gap hoverBg lh25 leftrightBox bfb">
+							<div class="pl10"><span class="shuxing">.appendTo</span>("domId")</div>
+							<div class="zhushi pr10">//当配置参数target为null的时候，会动态创建组件，需使用本方法插入到文档流,参数可以为eElementId或Dom对象</div>
+						</div>
+					</div>
+				</div>
+
+				<script language="javascript">
+					var selectView = SelectView({
+						target: "selectView",
+						callback: function(_titlt, _data) {
+							document.getElementById("selectedNode").innerText = (_titlt);
+							TipView("选中了：" + _titlt + "=" + _data);
+						}
+					});
+					var selectView2 = SelectView({
+						checkMode: true,
+						target: "selectView2",
+						callback: function(_titlt, _data) {
+							document.getElementById("selectedNode").innerText = (_titlt);
+							TipView("选中了：" + _titlt + "=" + _data);
+						}
+					});
+				</script>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var tipnav = new WindowDom("tipnav"),
+			selectnav = new WindowDom("selectnav"),
+			requestnav = new WindowDom("requestnav"),
+			lognav= new WindowDom("lognav"),
+			scrollnav = new WindowDom("scrollnav"),
+			loadingnav = new WindowDom("loadingnav"),
+			checknav = new WindowDom("checknav"),
+			imagebase64nav = new WindowDom("imagebase64nav"),
+			ajaxplusnav = new WindowDom("ajaxplusnav"),
+			hovertipnav = new WindowDom("hovertipnav"),
+			treenav =new WindowDom("treenav"),
+			pagenav =new WindowDom("pagenav"),
+			alertnav = new WindowDom("alertnav"),
+			tabnav = new WindowDom("tabnav"),
+			publicMethodnav= new WindowDom("publicMethod");
+		var navlist = [treenav,tipnav,pagenav,lognav, selectnav, alertnav, requestnav, scrollnav, loadingnav, checknav,hovertipnav, ajaxplusnav, imagebase64nav,tabnav,publicMethodnav];
+		var tipbox = new WindowDom("tipbox"),
+			treebox =new WindowDom("treebox"),
+			logbox= new WindowDom("logbox"),
+			selectbox = new WindowDom("selectbox"),
+			requestbox = new WindowDom("requestbox"),
+			scrollbox = new WindowDom("scrollbox"),
+			loadingbox = new WindowDom("loadingbox"),
+			checkbox = new WindowDom("checkbox"),
+			hovertipbox = new WindowDom("hovertipbox"),
+			ajaxplusbox = new WindowDom("ajaxplusbox"),
+			imagebase64box = new WindowDom("imagebase64box"),
+			alertbox = new WindowDom("alertbox"),
+			tabbox = new WindowDom("tabbox"),
+			pagebox = new WindowDom("pagebox"),
+			publicMethodbox=new WindowDom("publicMethodbox");
+		var boxlist = [treebox,tipbox,pagebox,logbox, selectbox, alertbox, requestbox, scrollbox, loadingbox, checkbox,hovertipbox, ajaxplusbox, imagebase64box,tabbox,publicMethodbox];
+
+		function showBody(event) {
+			for (var i = 0; i < navlist.length; i++) {
+				if (navlist[i].getNode() == this) {
+					boxlist[i].removeClass("hide");
+					navlist[i].addClass("hover");
+				} else {
+					boxlist[i].addClass("hide");
+					navlist[i].removeClass("hover");
+				}
+			}
+		}
+		for (var i = 0; i < navlist.length; i++) {
+			navlist[i].bind("click", showBody);
+		}
+		$$(function(){
+			var menuScrollView=ScrollView(".uiTypeFrameContent",{
+				gap:15,
+				bindWindowResize:true
+			})
+		})
+	</script>
+</body>
+
+</html>

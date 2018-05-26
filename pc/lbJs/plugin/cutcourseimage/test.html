@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="jquery.cutimage.css" rel="stylesheet">
+<script src="../../jquery/jquery.min1.8.3.js"></script>
+<script src="../jquery.mousewheel.js"></script>
+<script language="javascript" src="jquery.cutimage.js"></script>
+</head>
+<script>
+function onTest(){
+	$.cutImage("/images/cnu/focusimg/focus_01.jpg",
+		function(img_256,img_128,img_64,callbcak){
+			//提交图片（img_256,img_128,img_64）信息
+			//在提交后的ajax中 success:function(){
+				//callbcak(true);//用于取消组件自带的loading效果
+			//}
+		}
+	);
+}
+</script>
+<body>
+<button type="button" onClick="onTest()">测试</button>
+<!--div class="headframe">
+    <div class="headframe_box_bg"></div>
+	<div class="headframe_loading_animate"></div>
+    <div class="headframe_box">
+		<canvas id="userhead_frame_sub" style="display:none" width="180" height="180"></canvas>
+    	<div class="headframe_box_title">截取头像区域</div>
+    	<div class="headframe_box_close"></div>
+        <div class="headframe_cancos_box">
+        	<div class="headframe_cancos_s_box_l"></div>
+            <div class="headframe_cancos_s_box_t"></div>
+            <div class="headframe_cancos_s_box_r"></div>
+            <div class="headframe_cancos_s_box_b"></div>
+            <canvas id="userhead_frame" width="250" height="250"></canvas>
+        </div>
+        <div class="headframe_cancos_s_box">
+            <canvas id="userhead_frame_s" width="120" height="120"></canvas>
+        </div>
+        <div class="headframe_cancos_s_box_tip">120 * 120</div>
+        <div class="headframe_cancos_l_box">
+            <canvas id="userhead_frame_l" width="80" height="80"></canvas>
+        </div>
+        <div class="headframe_cancos_l_box_tip">80 * 80</div>
+        <div class="headframe_cancos_submit">提 交</div>
+    </div>
+</div-->
+</body>
+</html>

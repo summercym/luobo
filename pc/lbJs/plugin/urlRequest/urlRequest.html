@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	    <script type="text/javascript" src="urlRequest.js"></script>
+	    <script>
+	    	var urlRequestValue=new urlRequest();
+	    	urlRequestValue.setData("http://213.34/sw/as");//设置url
+	    	document.write(urlRequestValue.setData()+"<br/>");//获取当前url
+			urlRequestValue.setPage("cccc/deqwfd/dwe.wq").setFile("file.sa").setSearchString("mm=12&aa=2");//设置当前文件路径、文件名、参数
+	    	document.write(urlRequestValue.setProtocol()+"<br/>"+urlRequestValue.setHost()+"<br/>");//获取当前协议和host
+	    	document.write(urlRequestValue.setData()+"<br/>");//获取当前url
+	    	urlRequestValue.setData(window.location);//设置url
+	    	document.write(urlRequestValue.setData()+"<br/>");//获取当前url
+//			urlRequestValue.setPage("cccc/deqwfd/dwe.wq").setFile("file.sa").setSearchString("mm=12&aa=2");
+//	    	document.write(urlRequestValue.setData()+"<br/>");
+			
+			
+
+	    </script>
+	</head>
+	<body>
+	</body>
+</html>

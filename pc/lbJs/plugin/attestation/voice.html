@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>声音识别</title>
+<link rel="stylesheet" href="css/style.css">
+<script language="javascript" src="js/jquery.min.js"></script>
+<script language="javascript">
+var time=null
+var count=0;
+var goon=false;
+function GetRandomNum(Min,Max){   
+	var Range = Max - Min; 
+	var Rand = Math.random(); 
+	return(Min + Math.round(Rand * Range));
+} 
+var timevalue=GetRandomNum(0,9)+""+GetRandomNum(0,9)+""+GetRandomNum(0,9)+""+GetRandomNum(0,9)+"  "+""+GetRandomNum(0,9)+""+GetRandomNum(0,9)+""+GetRandomNum(0,9)+""+GetRandomNum(0,9)
+
+var countTip=["请点击麦克风，读出数字","请点击麦克风,进行第二次数据采集","请点击麦克风,进行第三次数据采集"]
+$(function(){
+	$("#voice_number").text(timevalue);
+	$(".sound_micro").mousedown(function(){
+		if($(".sound_micro").hasClass("loading"))return;
+		time=new Date();
+		$(".sound_micro").removeClass("fail").removeClass("recording").addClass("loading");
+		$(".voice_error_tip").fadeOut();
+		$(".voice_tip").fadeIn();
+	})
+	$(".sound_micro").bind("mouseup",onSubmitVoice);
+	function onSubmitVoice(event){
+		if($(".sound_micro").hasClass("loading")==false)return;
+		var newtime=new Date();
+		if(newtime-time<1000){
+			$(".sound_micro").removeClass("loading").removeClass("recording").addClass("fail");
+			$(".voice_tip").fadeOut();
+			$(".voice_error_tip").fadeIn();
+			count=0
+			$(".voice_tip .face_click").text(countTip[count]);
+		}else{
+			$(".sound_micro").removeClass("loading").removeClass("fail").addClass("recording");
+			$(".voice_tip .face_click").text("数据采集中，请稍后");	
+			setTimeout(function(){
+				count+=1;
+				$(".sound_micro").removeClass("loading").removeClass("fail").removeClass("recording");
+				$(".voice_tip .face_click").text(countTip[count]);
+				if(count>=1){
+					goon=true;
+					$("#voice_completeBox").fadeIn();
+					$("#voice_box").fadeOut();
+				}
+			},2000)
+		}
+	}
+	$("#up_step_btn").click(function(){
+		if(goon)	{
+			callback(true);
+		}else{
+			attestationCloseCallbcak();
+		}
+	})
+})
+function callback(_result){
+	try{
+		if(window.parent && window.parent.attestationCallbcak){window.parent.attestationCallbcak(_result);}
+	}catch(e){}
+}
+function attestationCloseCallbcak(){
+	try{if(window.parent && window.parent.closeAttestationFrame){window.parent.closeAttestationFrame()}}catch(e){};
+}
+</script>
+</head>
+
+<body>
+<div class="person_content">
+  <div class="person_records">认证信息<a class="close_btn" id="close_btn" onClick="attestationCloseCallbcak()"></a></div>
+  <div class="person_line vanra"></div>
+  <div class="face_content1" id="voice_box">
+    <div class="sound_box">
+      <div class="app_soundbg">
+        <div id="voice_number" class="number">---- ----</div>
+      </div>
+      <div  class="sound_micro"> 
+        <!--正在采集第一次，在 上面这个 div 的 class 上  添加 loading--> 
+        <!--采集成功第一次采集，在 上面这个 div 的 class 上  添加 recording--> 
+        <!--采集失败，在 上面这个 div 的 class 上  添加 fail-->
+        <div class="camera_loading"></div>
+      </div>
+    </div>
+    <div class="tipBox">
+        <div class="voice_tip">
+            <div class="face_click">请点击麦克风，读出数字</div>
+            <div class="sound_number"></div>
+        </div>
+        <div class="voice_error_tip hide">
+            <div class="errorTips">很遗憾，您没有通过验证，请点击麦克风重新验证</div>
+            <p>可能会存在的问题：</p>
+            <p><span>1.麦克风没有打开</span><span>2.周围环境过于嘈杂</span><span>3..........</span></p>
+        </div>
+  	</div>
+  </div>
+  <div class="face_content2 hide" id="voice_completeBox">
+    <div class="face_finish"></div>
+    <div class="face_click">恭喜您，通过验证</div>
+   <!-- <div class="face_test">3秒后弹窗关闭</div>-->
+    <div class="face_ok"> 
+    	<div id="up_step_btn" class="button display_b theme_2 width180 button_height38 continue_btn">继续学习</div> 	
+        <!--<div id="complete_btn" onClick="callback(true)" class="button display_b theme_1 width180 button_height38">试试人脸识别</div> -->
+    </div>
+  </div>
+</div>
+</body>
+</html>

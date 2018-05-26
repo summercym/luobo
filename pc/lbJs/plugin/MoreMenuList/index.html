@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>菜单演示</title>
+<link rel="stylesheet" type="text/css" href="../../../mooccss/template/classly.css">
+<link rel="stylesheet" type="text/css" href="../../../mooccss/template/public.css">
+<script src="../../jquery/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="MoreMenuList.css">
+<script src="MoreMenuList.js"></script>
+<style type="text/css">
+.box{
+	width:500px;
+	height:200px;
+	margin:0 auto;
+	border:1px solid #e5e5e5;
+}
+.caption{
+	height:40px;
+	line-height:40px;
+	background-color:#f5f5f5;
+	border-bottom:1px solid #e5e5e5;
+}
+.captiontitle{
+	padding:0px 10px;
+	float:left;
+	white-space:nowrap;
+}
+.more{
+	height:30px;
+	width:30px;
+	margin-top:4px;
+	float:right;
+	cursor:pointer;
+	background-color:#e5e5e5;
+	margin-right:10px;
+	text-align:center;
+	line-height:30px;
+}
+</style>
+</head>
+<script>
+var moreMenuList
+$(function(){
+	moreMenuList=new MoreMenuList({
+		target:".more",
+		algin:"right"
+	});
+	moreMenuList.addMenuNode("测试菜单1",1,function(_config,_moreMenuList){
+		alert("["+this.getCaption()+"]被选中");
+	}).addMenuNode("测试菜单2",{id:12},function(_config,_moreMenuList){
+		alert("["+this.getCaption()+"]被选中    附件对象的id："+_config.id);
+	})
+})
+</script>
+<body>
+	<div class="box mt10">
+		<div class="caption">
+			<div class="captiontitle">标题</div>
+			<div class="more">∷</div>
+		</div>
+		<div class="p20 text_center">
+			<button class="button theme_1" onClick="moreMenuList.setDisable(true)">不可用</button>
+			<button class="button theme_1" onClick="moreMenuList.setDisable(false)">设为可用</button>
+		</div>
+	</div>
+</body>
+</html>

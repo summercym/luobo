@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"> 
+<head>
+<title>人脸识别</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="swf/swfobject.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/faceRegister.js"></script>
+<script type="text/javascript">
+swfobject.embedSWF("swf/face.swf?random="+Math.random(), "flashContent", "220", "300", "9.0.0", null, null, {wmode: 'transparent'});
+</script>
+</head>
+<body>
+<div class="faceCompareContent">
+	<a class="close_btn" id="close_btn" onClick="attestationCloseCallbcak()"></a>
+	<div class="person_records">注册人脸信息</div>
+	<div class="person_line vanra"></div>
+    <div class="face_content" id="camera_box">
+      <div class="face_box">
+        <div class="app_face">
+			<div id="flashContent"></div>
+		</div>
+        <div class="face_btn hide">
+        	<div class="face_btn_box">
+        	<div class="face_node" id="cancel_camera">重拍</div>
+			<div class="face_node faceok" id="submit_camera">确定</div>
+            </div>
+        </div>
+        <div  class="face_camera hide" id="face_camera">
+          <div class="camera_loading"></div>
+        </div>
+        <div class="camera_result hide">
+        	<div class="camera_retry">重试</div>
+        </div>
+      </div>
+      <div class="faceCompareTip">将人脸信息录入系统特征库</div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+//2017年06月29日
+PageView
+    1、创建此插件
+Array
+    1、增加forEatch(function(_child){})函数扩展，使用方法：[1,2,3,4].forEatch(function(_child){alert(_child)})
+TagLabelView
+    1、创建标签组件
+HoverTipView
+    1、创建移入移出提示组件
+AlertView
+    1、增加配置参数messagePadding，可以设定弹框内部边距
+    2、增加messagePadding方法
+    3、如果message传递的是Dom元素，在callback(_type,_message)被回调的时候，可对_message进行处理，比如添加到其他位置并返回false阻止组件默认处理，否则会将message添加到body中隐藏
+    4、配置项classNames数组中默认类第一个字母变成了大写
+TipView
+    1、增加radius配置参数，支持改变圆角
+ScrollView
+    1、改变创建方式，第一个参数为target，第二个参数为配置参数
+    2、增加radius配置参数，支持改变圆角
+    3、配置参数 margin 由数组变为文本或数字，如"0 0 5px 0"或"5px"或5
+    4、方法setMargin变更为margin，参数同上

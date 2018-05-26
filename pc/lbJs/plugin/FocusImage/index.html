@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>轮播图</title>
+<link rel="stylesheet" type="text/css" href="FocusImage.css">
+<script language="javascript" src="../../jquery/jquery.min.js"></script>
+<script language="javascript" src="FocusImage.js"></script>
+</head>
+<style>
+.view{
+	width:800px;
+	height:400px;
+	position: relative;
+	background: #E4E4E4;
+	margin: 30px auto;
+}
+</style>
+<script landscape="javascript">
+$(function(){
+	new ImageList(".view",["image/1.jpg","image/2.jpg","image/3.jpg","image/4.jpg","image/5.jpg"]);
+});
+</script>
+<body>
+<div class="view">
+	
+</div>
+</body>
+</html>

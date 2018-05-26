@@ -1,0 +1,39 @@
+.pagination {
+    display:block;
+	padding-left:0;
+	text-align:center;
+}
+.pagination>a{
+	line-height:1;
+	height:auto;
+	display:inline-block;
+    position: relative;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: #88888888;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    margin-left: 4px;
+	border-radius: 3px;
+}
+.pagination>a:hover{
+    border: #cdcdcd solid 1px;
+}
+.pagination>.active,
+.pagination>.active:hover,
+.pagination>.active:focus{
+    z-index: 2;
+    color: #fff;
+    background-color: #cdcdcd;
+    border-color: #cdcdcd;
+    cursor: default;
+}
+.pagination>.disabled,
+.pagination>.disabled:hover,
+.pagination>.disabled:focus {
+    color: #999;
+    background-color: #fff;
+    border-color: #ddd;
+    cursor: not-allowed;
+}
+
