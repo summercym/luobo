@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>专题素材</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--global-->
+<script language="javascript" type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/ss_base.css" />
+<!--/global-->
+
+
+<!--static-->
+<script language="javascript" type="text/javascript" src="js/newztht.js"></script>
+<link rel="stylesheet" type="text/css" href="css/newztht.css">
+<!--/static-->
+
+
+</head>
+
+<body>
+
+
+
+<div class="nzt_main">
+
+    
+
+
+    <div class="nzt_maintabw" >
+
+        <h1 class="nzt_maintitle">
+            选择图片（共3张）
+        </h1>
+       
+
+
+
+        <div class="nzt_upload_formw">
+            <form enctype="multipart/form-data">
+                <div class="uploadimgbtnw">
+                    <p>大小不超过5M，支持jpg/png/gif格式</p>
+                    <div class="uploadimgbtn"><span id="fileuploader">上传图片</span></div>
+                </div>
+                
+            </form>
+        </div>
+
+
+<script type="text/javascript" src="js/swfupload.js"></script>
+
+<script type="text/javascript">
+
+var swfu;
+
+var swfuOption = {//swfupload选项
+
+    upload_url : "http://www.swfupload.org/upload.php",
+    flash_url : "js/swfupload.swf",
+
+    button_placeholder_id : "fileuploader",//上传按钮占位符的id
+    file_size_limit : "5MB",//用户可以选择的文件大小，有效的单位有B、KB、MB、GB，若无单位默认为KB
+    file_upload_limit : 10,
+    file_types : "*.jpg;*.gif;*.png",
+
+
+
+    button_width: 100, //按钮宽度
+    button_height: 36, //按钮高度
+    button_image_url : "images/swfubtn.png",
+    button_text_left_padding : 15,
+    button_cursor : SWFUpload.CURSOR.HAND,
+
+    file_dialog_complete_handler:file_dialog_complete_fun,
+    upload_progress_handler:upload_progress_fun,
+    upload_success_handler:upload_success_fun,
+    upload_error_handler:upload_error_fun,
+
+}
+swfu = new SWFUpload(swfuOption);//初始化并将swfupload按钮替换swfupload占位符
+
+function file_dialog_complete_fun(a,b,c){
+    
+    console.log(a);
+    console.log(b);
+    console.log(c);
+
+    this.startUpload();
+
+}
+
+function upload_progress_fun(a,b,c){
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+
+
+function upload_success_fun(){
+    alert("上传成功");
+}
+
+function upload_error_fun(a,b){
+    console.log("error:"+b);
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        <div class="nzt_sclistw">
+            
+            <div class="nzt_sclistitem" imgid="1">
+                <div class="imgw"><img src="images/liststyleicon.png"></div>
+                <div class="imggs">PNG</div>
+                <div class="imgcheckcover"></div>
+
+            </div>
+            <div class="nzt_sclistitem" imgid="2">
+                <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                <div class="imggs">JPG</div>
+                <div class="imgcheckcover"></div>
+            </div>
+            <div class="nzt_sclistitem" imgid="3">
+                <div class="imgw"><img src="images/ztimg730400.jpg"></div>
+                <div class="imggs">JPG</div>
+                <div class="imgcheckcover"></div>
+            </div>
+            <div class="nzt_sclistitem" imgid="1">
+                <div class="imgw"><img src="images/liststyleicon.png"></div>
+                <div class="imggs">PNG</div>
+                <div class="imgcheckcover"></div>
+            </div>
+            <div class="nzt_sclistitem" imgid="2">
+                <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                <div class="imggs">JPG</div>
+                <div class="imgcheckcover"></div>
+            </div>
+            <div class="nzt_sclistitem" imgid="3">
+                <div class="imgw"><img src="images/ztimg730400.jpg"></div>
+                <div class="imggs">JPG</div>
+                <div class="imgcheckcover"></div>
+            </div>
+            <div class="nzt_sclistitem" imgid="1">
+                <div class="imgw"><img src="images/liststyleicon.png"></div>
+                <div class="imggs">PNG</div>
+                <div class="imgcheckcover"></div>
+            </div>
+            <div class="nzt_sclistitem" imgid="2">
+                <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                <div class="imggs">JPG</div>
+                <div class="imgcheckcover"></div>
+            </div>
+            <div class="nzt_sclistitem" imgid="3">
+                <div class="imgw"><img src="images/ztimg730400.jpg"></div>
+                <div class="imggs">JPG</div>
+                <div class="imgcheckcover"></div>
+            </div>
+            <div class="nzt_sclistitem" imgid="1">
+                <div class="imgw"><img src="images/liststyleicon.png"></div>
+                <div class="imggs">PNG</div>
+                <div class="imgcheckcover"></div>
+            </div>
+
+        </div>
+
+            
+
+        <div class="nzt_pagew" style="padding:0px 0px 60px 0px;">
+            <a href="" class="prev">◀</a><span>2/<em class="max">14</em></span><a href="" class="next">▶</a>
+            <form>
+                <input type="number" name=""><input type="button" name="" value="跳转" class="goxpagebtn">
+            </form>
+            
+            <div class="checkedtips">已选<strong id="checkednum">0</strong>张，可选1张</div>
+
+        </div>
+
+
+        <div class="checkimg_submitbtnw">
+            <a href="javascript:;" class="checkimg_submitbtn" id="checkimg_submitbtn">确定</a>
+        </div>
+
+
+
+
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript">
+$(function(){
+
+    $(".nzt_sclistitem").click(function(){
+        var _this = $(this);
+        if(_this.hasClass("current")){
+            _this.removeClass("current");
+            $("#checkednum").html("0");
+        }else{
+            $(".nzt_sclistitem").removeClass("current");
+            _this.addClass("current");
+            $("#checkednum").html("1");
+        }
+    });
+
+    $("#checkimg_submitbtn").click(function(){
+        var _url = $(".nzt_sclistitem.current .imgw img").attr("src");
+        window.parent.changeFmt(_url);
+    });
+    
+
+});
+</script>
+
+
+
+
+
+
+</body>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>内容创建</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--global-->
+<script language="javascript" type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/ss_base.css" />
+<!--/global-->
+
+
+<!--static-->
+<link rel="stylesheet" type="text/css" href="css/newztht.css">
+<script src="tinymce/tinymce.min.js"></script>
+<script src="js/newztht.js"></script>
+<script src="js/clipboard.min.js"></script>
+<!--/static-->
+
+
+</head>
+
+<body>
+
+
+
+<div class="main_editer">
+
+    <textarea style="width:760px;margin:30px 60px;" placeholder="开始写正文" id="maineditor"></textarea>
+    <div class="edit_others_w">
+        <div class="edit_others">
+            <input type="text" name="title" placeholder="请在这里输入标题" class="zt_t_input"  autocomplete=off id="nzte_title">
+            <input type="text" name="author" placeholder="请输入作者" class="zt_au_input"  autocomplete=off id="nzte_author">
+        </div>
+    </div>
+    <div class="editer_fmtw">
+        <div class="editer_fmt1">
+            <span class="t">封面：</span>
+            <a href="javascript:;" class="checkfmtbtn" id="checkfmtbtn">从素材库选取</a>
+        </div>
+        <div class="editer_fmt2">
+            <span class="t">封面预览：</span>
+            <div class="imgw"><img src="images/nopic730320.png" class="editer_fmt_img" id="editer_fmt_img"></div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="alertboxw" id="alertboxw1" style="display:none;">
+    
+    <div class="editer_blackbg1" id="editer_blackbg1"></div>
+    <div class="editer_alertbox1">
+        <iframe src="iframe_checkimg.html" style="height:100%;width:100%;"></iframe>
+    </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+$(function(){
+
+    $("#checkfmtbtn").click(function(){
+        $("#alertboxw1").show();
+    });
+    $("#editer_blackbg1").click(function(){
+        $("#alertboxw1").hide();
+    });
+
+});
+ 
+function changeFmt(srcurl){
+
+    if(srcurl =="" || srcurl == undefined){
+        $("#alertboxw1").hide();
+    }else{
+        $("#editer_fmt_img").attr("src",srcurl);
+        $("#alertboxw1").hide();
+    }   
+
+}
+
+
+</script>
+
+
+
+<div class="alertboxw" id="alertboxw2" style="display:none;">
+    
+    <div class="editer_blackbg1" id="editer_blackbg2"></div>
+    <div class="editer_alertbox1">
+        <iframe src="iframe_insertimg.html" style="height:100%;width:100%;"></iframe>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+$(function(){
+
+
+    $("#editer_blackbg2").click(function(){
+        $("#alertboxw2").hide();
+    });
+
+});
+function shutInsertimgbox(){
+     $("#alertboxw2").hide();
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<div class="main_editer_bottombarw">
+    <div class="main_editer_bottombar">
+        <div class="meb_btn meb_btn1">
+            <a href="javascript:;" class="btn btn1" id="save_cg">保存草稿</a>
+            <div class="arrow">
+                <span class="i">∨</span>
+                <div class="btn_morew">
+                    <a href="javascript:;" class="btn_more" id="save_mb">保存为模版</a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="meb_btn meb_btn1">
+            <a href="javascript:;" class="btn btn2" id="preview_zt">预览专题</a>
+            <!-- <div class="arrow">
+                <span class="i">∨</span>
+                <div class="btn_morew">
+                    <a href="javascript:;" class="btn_more" id="getlink_zt">生成专题链接</a>
+                    <input type="text" name="" id="getlink_zt_input" style="height:1px;width:1px;opacity:0;">
+                </div>
+            </div> -->
+        </div>
+        <div class="meb_btn meb_btn1">
+            <a href="javascript:;" class="btn btn2" id="save_post">保存并上线</a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    tinymce.init({
+        selector: '#maineditor',
+        height: 400,
+        plugins: [
+            "placeholder",
+            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars fullscreen insertdatetime media nonbreaking",
+            "table contextmenu directionality emoticons template textcolor paste fullpage textcolor colorpicker textpattern uploadrecipe ssinsertimg ssinsertvideo"
+          ],
+        toolbar: "undo redo | fontsizeselect bold italic underline forecolor | alignleft aligncenter alignright | bullist numlist | blockquote hr | link ssinsertimg ssinsertvideo uploadrecipe | ",
+        placeholder_attrs:{
+            style:{
+                position:'absolute',
+                top:'33px', 
+                left:'60px', 
+                color: '#aaa',
+                padding: '0%',
+                overflow: 'hidden',
+                "white-space": 'pre-wrap'
+            }
+        },
+        menubar: false,
+        toolbar_items_size: 'big',
+        fontsize_formats: "10px 12px 14px 15px 16px 17px 18px 20px 22px 24px 28px 32px 36px",
+        callbacks:function(){
+            console.log(tinyMCE.activeEditor.selection.getContent());
+        },
+        content_css: [
+            'css/ztmb.css'
+        ],
+    });
+
+
+
+function addCp(cpdom){
+    var dom = tinyMCE.activeEditor.dom;
+    // alert(cpdom);
+    tinyMCE.activeEditor.selection.setContent(cpdom);
+}
+
+
+
+
+
+</script>
+
+
+
+
+<script type="text/javascript">
+
+$(function(){
+
+    $("#save_cg").click(function(){editerPoster(1)});
+    $("#save_mb").click(function(){showMbbox();});
+    $("#preview_zt").click(function(){editerPoster(3)});
+    // $("#getlink_zt").click(function(){editerPoster(4)});
+    $("#save_post").click(function(){editerPoster(4)});
+
+
+    
+
+
+
+});
+
+function editerPoster(type,data){
+
+    var _type = type;
+    var _title = $("#nzte_title").val();
+    var _author = $("#nzte_author").val();
+    var _content = tinyMCE.activeEditor.getContent({format: 'raw'});
+    var _coverimg = $("#editer_fmt_img").attr("src");
+    var _data = data;
+
+    console.log(_title);
+    console.log(_author);
+    console.log(_content);
+    console.log(_coverimg);
+
+    $.ajax({
+        url: "ajax_save.html?v=14",
+        data: {
+            type:_type,
+            title:_title, 
+            author:_author,
+            content:_content,
+            coverimg:_coverimg,
+            data:_data,
+        },
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+            var n =  parseInt(data.type);
+            switch(n){
+                case 1:
+                    showSuccTips("保存成功，请到“专题素材/草稿箱”查看");
+                    break;
+                case 2:
+                    showSuccTips("保存成功，请到“模版专题”查看");
+                    $("#blackbg1").fadeOut();
+                    $("#alertbox1").fadeOut();
+                    break;
+                case 3:
+                    // 返回格式示例：{"type":"3","ewmurl":"http://www.meishij.net/ajax/qrcode_wap.php?i=1882436","zturl":"http://www.meishij.net"}
+                    var ewmurl = data.ewmurl;
+                    var zturl = data.zturl;
+                    showEwm(ewmurl,zturl);
+                    break;
+                case 4:
+                    // 返回格式示例：{"type":"4","ztid":"1"}
+                    var ztid=data.ztid;
+                    window.location="zt_save_post.html?ztid="+ztid;
+                    break;
+                
+            }
+        },
+
+
+    });
+
+
+}
+
+
+
+
+$(function(){
+
+    $("#blackbg1,#ab_shutbtn1").click(function(){
+        $("#blackbg1").fadeOut();
+        $("#alertbox1").fadeOut();
+    });
+    $(".addmb_btn").click(function(){
+        var t = $("#alertbox_mbtitle").val() || "未命名模板";
+        editerPoster(2,t);
+    });
+
+});
+
+function showMbbox(){
+
+    $("#blackbg1").fadeIn();
+    $("#alertbox1").fadeIn();
+
+}
+
+</script>
+
+
+
+
+
+
+
+<div class="blackbg" id="blackbg1" style="display:none;"></div>
+<div class="alertbox" id="alertbox1" style="height:280px;width:500px;display:none;">
+    <h1>专题模版</h1>
+    <!-- <p><img src="images/delalerticon.png">　删除后将不可恢复，确认要删除吗？</p> -->
+    
+    <div class="inputw"><input type="text" name="" placeholder="请输入模版标题" id="alertbox_mbtitle"></div>
+
+    <a href="javascript:void(0);" class="btn addmb_btn">确定</a>
+    <span class="shutbtn" id="ab_shutbtn1">×</span>
+</div>
+
+
+
+
+
+
+<div class="blackbg" id="blackbg2" style="display:none;"></div>
+<div class="alertbox" id="alertbox2" style="height:280px;width:500px;display:none;">
+    <h1>插入视频</h1>
+    <!-- <p><img src="images/delalerticon.png">　删除后将不可恢复，确认要删除吗？</p> -->
+    
+    <div class="inputw"><input type="text" name="" placeholder="请输入视频代码，支持腾讯、优酷、爱奇艺，推荐腾讯" id="alertbox_videocode"></div>
+
+    <a href="javascript:void(0);" class="btn addvideo_btn">插入视频</a>
+    <span class="shutbtn" id="ab_shutbtn2">×</span>
+</div>
+
+<!-- 
+
+<iframe frameborder="0" width="640" height="498" src="https://v.qq.com/iframe/player.html?vid=o01768xitrp&tiny=0&auto=0" allowfullscreen></iframe>
+<iframe height=498 width=510 src='http://player.youku.com/embed/XMzQ0NzY0NjgyNA==' frameborder=0 'allowfullscreen'></iframe>
+<iframe src="http://open.iqiyi.com/developer/player_js/coopPlayerIndex.html?vid=044920237daf828d645238d1dfbc5a23&tvId=956706900&accessToken=2.f22860a2479ad60d8da7697274de9346&appKey=3955c3425820435e86d0f4cdfe56f5e7&appId=1368&height=100%&width=100%" frameborder="0" allowfullscreen="true" width="100%" height="100%"></iframe>
+
+ -->
+
+<script type="text/javascript">
+
+$(function(){
+
+    $("#blackbg2,#ab_shutbtn2").click(function(){
+        $("#blackbg2").fadeOut();
+        $("#alertbox2").fadeOut();
+    });
+    $(".addvideo_btn").click(function(){
+        var vc = $("#alertbox_videocode").val();
+        var len = vc.length;
+        vc = vc.substring(0,8) + ' style="width:100%!important;height:100%!important;position:absolute;left:0px;top:0px;" ' + vc.substring(8,len);
+        vc = '<div class="editor_videow" style="width:100%;padding-top:56.25%;overflow:hidden;position:relative;">'+vc+'</div>';
+        addCp(vc);
+        $("#blackbg2").fadeOut();
+        $("#alertbox2").fadeOut();
+    });
+
+});
+
+
+
+</script>
+
+
+
+
+
+
+
+
+<div class="searchrecipe" id="searchrecipe">
+    <iframe src="iframe_searchrecipe.html" style="height:100%;width:100%;"></iframe>
+</div>
+
+<script type="text/javascript">
+function searchrecipe_shut(){
+    $("#searchrecipe").hide();
+    $("#searchrecipe iframe").attr("src","");
+}
+</script>
+
+
+
+
+</body>

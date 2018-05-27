@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>标题</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="keywords" content="美食,美食网,菜谱,菜谱网,美食地图,食谱,食谱网,特色食谱,特色美食,美食大全家常菜谱,菜谱大全,美食网站,特色菜谱,最新菜谱,美食分享,美食加盟,人气美食,菜谱分享,餐饮加盟,特色小吃,美食文化">
+<meta name="description" content="美食杰 - 中国最优质的美食，食谱，菜谱网。做你最喜爱的美食网，菜谱网。提供最人性化的菜谱大全,食谱家常菜，家常菜谱大全的美食网,让人们在宣泄的都市中体验在家常做菜,享受美食的乐趣.找家常菜谱,上美食杰菜谱美食网">
+
+<!--global-->
+<script language="javascript" type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/ss_base.css" />
+<link rel="stylesheet" type="text/css" href="css/comment.css"/>
+<!--/global-->
+
+
+<!--static-->
+<link rel="stylesheet" type="text/css" href="css/msjgght.css">
+<!--/static-->
+
+
+</head>
+
+<body>
+
+
+
+
+<div class="header">
+    <a href="http://www.meishij.net" class="logo"><img src="http://site.meishij.net/p2/20151208/20151208182949_392.png"></a>
+    <!-- <h1>广告管理系统</h1> -->
+    <div class="admin_info">
+        <div class="admin_logined">管理员:admin　<a href="">退出</a></div>
+        <!-- <div class="admin_login"><a href="">登录</a></div> -->
+    </div>
+</div>
+
+<div class="content">
+    
+
+    <div class="leftbar" id="leftbar">
+        
+        <dl class="leftbar_dl">
+            <dt>投放资源管理</dt>
+                <dd class="current"><a href="editzt.html"  target="main_iframe">编辑专题</a></dd>
+                <dd><a href="iframe_pqb.html"  target="main_iframe">排期表</a></dd>
+            <dt>投放管理</dt>
+                <dd><a href="iframe_ggtf_list.html" target="main_iframe">广告投放</a></dd>
+                <dd><a href="iframe_wl_list.html"  target="main_iframe">物料管理</a></dd>
+        </dl>
+
+    </div>
+
+    <div class="rightiframe" id="rightiframe">
+        
+        <iframe id="main_iframe" name="main_iframe" src="iframe_dmwgl.html"></iframe>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+<script>
+var wH;
+var wW;
+$(function(){
+
+	
+
+    setSize();
+
+    $("#leftbar a").click(function(){
+        $("#leftbar dd").removeClass("current");
+        $(this).parents("dd").addClass("current");
+    });
+
+
+    $(window).resize(function(){
+        setSize();
+    });
+
+});
+
+function setSize(){
+    wH = $(window).height();
+    wW = $(window).width();
+    $("#leftbar").height(wH-101);
+    $("#rightiframe").width(wW-200);
+    $("#rightiframe").height(wH-101);
+    $("#main_iframe").height(wH-101);      
+}
+
+</script>
+
+
+
+
+</body>

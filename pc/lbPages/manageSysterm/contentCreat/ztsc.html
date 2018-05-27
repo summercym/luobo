@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>专题素材</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--global-->
+<script language="javascript" type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/ss_base.css" />
+<!--/global-->
+
+
+<!--static-->
+<script language="javascript" type="text/javascript" src="js/newztht.js"></script>
+<link rel="stylesheet" type="text/css" href="css/newztht.css">
+<!--/static-->
+
+
+</head>
+
+<body>
+
+
+
+<div class="">
+
+    
+   <!--  <div class="nzt_maintab">
+        <span class="nzt_maintabitem current" tab="1">专题草稿</span>
+    </div> -->
+
+
+    <!-- <div class="nzt_maintabw" tab="1" > -->
+
+        <h1 class="nzt_maintitle">
+            专题草稿（共3条）
+            <div class="ztliststylesw">
+                <span class="ztliststyles_1 current" for="1"></span>
+                <span class="ztliststyles_2 " for="1"></span>
+            </div>
+        </h1>
+        
+        <div class="nzt_search_formw">
+            <form>
+                <input type="text" name="" placeholder="标题"><input type="submit" name="" value="">
+            </form>
+        </div>
+
+
+        <div class="zt_listw" list="1">
+
+            <div class="zt_list_header">
+                <span class="span1">专题内容</span>
+                <span class="span2">更新时间</span>
+                <span class="span3">操作</span>
+            </div>
+
+            <!-- <div class="ztlist_nocontip"><p>没有找到相关专题</p></div> -->
+        
+            <div class="zt_listitem" ztid="1">
+                <div class="w1">
+                    <h1>1专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="2">
+                <div class="w1">
+                    <h1>2专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/nopic730320.png"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="3">
+                <div class="w1">
+                    <h1>3专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="nzt_pagew">
+            <a href="" class="prev">◀</a><span>2/<em class="max">14</em></span><a href="" class="next">▶</a>
+            <form>
+                <input type="number" name=""><input type="button" name="" value="跳转" class="goxpagebtn">
+            </form>
+        </div>
+
+
+
+
+    <!-- </div> -->
+
+<script type="text/javascript">
+
+
+function file_dialog_complete_fun(a,b,c){
+    
+    console.log(a);
+    console.log(b);
+    console.log(c);
+
+    this.startUpload();
+
+}
+
+function upload_progress_fun(a,b,c){
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+
+
+function upload_success_fun(){
+    alert("上传成功");
+}
+
+function upload_error_fun(a,b){
+    console.log("error:"+b);
+}
+
+
+</script>
+
+
+
+
+
+    </div>
+
+
+</div>
+
+
+<div class="blackbg" id="blackbg" style="display:none;"></div>
+<div class="alertbox" id="alertbox" style="height:280px;width:500px;display:none;">
+    <h1>确认删除提示</h1>
+    <p><img src="images/delalerticon.png">　删除后将不可恢复，确认要删除吗？</p>
+    <a href="javascript:void(0);" class="btn ztid_delbtn" ztid="">删除</a>
+    <span class="shutbtn">×</span>
+</div>
+
+
+<script type="text/javascript">
+$(function(){
+    $(".zt_listitem .del").click(function(){
+        var _this = $(this);
+        var ztid = _this.parents(".zt_listitem").attr("ztid");
+        $("#alertbox .ztid_delbtn").attr("ztid",ztid);
+        $("#blackbg").fadeIn();
+        $("#alertbox").fadeIn();
+    });
+
+    $("#alertbox .shutbtn").click(function(){
+        $("#blackbg").fadeOut();
+        $("#alertbox").fadeOut();
+    });
+
+    $(document).on("click",".ztid_delbtn",function(){
+        var _this = $(this);
+        var ztid= _this.attr("ztid");
+        $.post("1.html?ztid="+ztid,function(data){
+            if(data == 1){
+                $(".zt_listitem[ztid="+ztid+"]").remove();
+                $("#blackbg").fadeOut();
+                $("#alertbox").fadeOut();
+            }
+        });
+    });
+
+
+    $(".tools_del").click(function(){
+        var _this = $(this);
+        var _imgid = _this.parents(".nzt_sclistitem").attr("imgid");
+        $.post("1.html?imgid="+_imgid,function(data){
+
+            if(data==1){
+                _this.parents(".nzt_sclistitem").remove();
+            }
+
+        });
+    });
+
+
+    $("#blackbg").click(function(){
+        $("#blackbg").fadeOut();
+        $("#alertbox").fadeOut();
+    });
+
+
+});
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>

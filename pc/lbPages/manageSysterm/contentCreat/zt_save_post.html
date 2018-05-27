@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>发布专题</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--global-->
+<script language="javascript" type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/ss_base.css" />
+<!--/global-->
+
+
+<!--static-->
+<script language="javascript" type="text/javascript" src="js/newztht.js"></script>
+<link rel="stylesheet" type="text/css" href="css/newztht.css">
+
+
+
+
+<script language="javascript" type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery-ui-sliderAccess.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery-ui-timepicker-addon-i18n.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-timepicker-addon.css">
+
+
+
+
+
+<!--/static-->
+
+
+</head>
+
+<body>
+
+
+
+<div class="nzt_main">
+
+    
+    <div class="nzt_path"><a href="javascript:history.go(-1)">< 返回</a></div>
+
+
+
+    <div class="nzt_maintabw" tab="1">
+
+        <h1 class="nzt_maintitle">
+            发布专题
+        </h1>
+        
+
+
+        <div class="zt_listw" list="1">
+            <div class="zt_listitem" ztid="1">
+                <div class="w1">
+                    <h1>1专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                </div>
+                <div class="w2">
+                    <p>未设置发布时间</p>
+                </div>
+            </div>
+        </div>
+
+        
+        <form>
+
+
+            <div class="fbzt_tjbtnsw">
+                <div>
+                    <div class="fbzt_tjbtns_t">
+                        <label><input type="radio" name="tjornot" checked="checked" id="open_tj" value="1"> 开启默认推荐</label>
+                        <label><input type="radio" name="tjornot" id="shut_tj" value="2"> 关闭默认推荐</label>
+                    </div>
+                    <div class="fbzt_tjbtns_c" id="fbzt_tjbtns_c">
+                        <label><input type="checkbox" name="tjw" checked="checked"> app首页推荐</label>
+                        <label><input type="checkbox" name="tjw" checked="checked"> web站首页推荐</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fbzt_postbtnsw">
+                <div>
+                    <div class="fbzt_postbtns_t">
+                        <label><input type="radio" name="noworlater" id="post_later" checked="checked" value="1"> 定时发布</label>
+                        <label><input type="radio" name="noworlater" id="post_now" value="2"> 立即发布</label>
+                    </div>
+                    <div class="fbzt_postbtns_c" id="fbzt_postbtns_c">
+                        <input type="text" name="posttime" placeholder="请选择发布时间" id="datepicker">
+                    </div>
+                </div>
+            </div>
+
+            <div class="fbzt_submitbtnw">
+                <a href="javascript:;" id="fbzt_submitbtn" class="fbzt_submitbtn">发布</a>
+            </div>
+
+
+
+        </form>
+
+
+
+    </div>
+
+
+
+    
+
+
+
+</div>
+
+
+
+<div class="blackbg" id="blackbg2" style="display:none;"></div>
+<div class="alertbox" id="alertbox2" style="height:280px;width:600px;display:none;">
+    <h1>确认发布提示</h1>
+    <p><img src="images/delalerticon.png">　发布后将直接显示到APP/Web站，请仔细检查专题内容</p>
+    <a href="javascript:void(0);" class="btn ztmb_delbtn" mbid="">发布</a>
+    <span class="shutbtn">×</span>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+
+
+$(function(){
+
+
+    $("#alertbox2 .shutbtn").click(function(){
+        $("#blackbg2").fadeOut();
+        $("#alertbox2").fadeOut();
+    });
+
+    $(document).on("click",".ztmb_delbtn",function(){
+        $("form").submit();
+        $("#blackbg2").fadeOut();
+        $("#alertbox2").fadeOut();
+    });
+
+
+    $("#blackbg2").click(function(){
+        $("#blackbg2").fadeOut();
+        $("#alertbox2").fadeOut();
+    });
+
+
+});
+
+
+
+
+$(function(){
+
+
+    $("#fbzt_submitbtn").click(function(){
+        var noworlater = $("input[name='noworlater']:checked").val();  
+        var tjornot = $("input[name='tjornot']:checked").val(); 
+
+        var time = $("#datepicker").val();
+        if(noworlater ==1 && (time == "" || time == undefined)){
+            showTips("请输入发布时间");
+        }else{
+
+            if(noworlater == 2 && tjornot == 1){
+                $("#blackbg2").fadeIn();
+                $("#alertbox2").fadeIn();
+            }else{
+                $("form").submit();
+            }
+
+        }
+
+        
+
+    });
+
+
+    $( "#datepicker").datetimepicker({
+        minDate: "0D",
+        minTime: "0M",
+        dateFormat:"yy-mm-dd",
+    });
+
+
+    $("#open_tj").click(function(){
+        $("#fbzt_tjbtns_c input[type=checkbox]").click();
+        $("#fbzt_tjbtns_c").slideDown(300);
+    });
+    $("#shut_tj").click(function(){
+        $("#fbzt_tjbtns_c input[type=checkbox]").removeAttr("checked");
+        $("#fbzt_tjbtns_c").slideUp(300);
+    });
+
+
+    $("#post_later").click(function(){
+        $("#fbzt_postbtns_c").slideDown(300);
+    });
+    $("#post_now").click(function(){
+        $("#fbzt_postbtns_c input[type=text]").val("");
+        $("#fbzt_postbtns_c").slideUp(300);
+    });
+
+
+
+});
+</script>
+
+
+
+</body>

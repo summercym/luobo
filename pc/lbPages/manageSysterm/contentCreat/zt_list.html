@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>专题列表</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--global-->
+<script language="javascript" type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/ss_base.css" />
+<!--/global-->
+
+
+<!--static-->
+<script language="javascript" type="text/javascript" src="js/newztht.js"></script>
+<link rel="stylesheet" type="text/css" href="css/newztht.css">
+<script src="js/clipboard.min.js"></script>
+<!--/static-->
+
+
+</head>
+
+<body>
+
+
+
+<div class="nzt_main">
+
+    
+    <div class="nzt_maintab">
+        <span class="nzt_maintabitem current" tab="1">定时发布的专题</span>
+        <span class="nzt_maintabitem" tab="2">已发布的专题</span>
+        <span class="nzt_maintabitem" tab="3">专题草稿</span>
+    </div>
+
+
+    <div class="nzt_maintabw" tab="1">
+
+        <h1 class="nzt_maintitle">
+            定时发布的专题（共3条）
+            <div class="ztliststylesw">
+                <span class="ztliststyles_1 current" for="1"></span>
+                <span class="ztliststyles_2 " for="1"></span>
+            </div>
+        </h1>
+        
+        <div class="nzt_search_formw">
+            <form>
+                <input type="text" name="" placeholder="标题"><input type="submit" name="" value="">
+            </form>
+        </div>
+
+
+        <div class="zt_listw" list="1">
+
+            <div class="zt_list_header">
+                <span class="span1">专题内容</span>
+                <span class="span2">更新时间</span>
+                <span class="span3">操作</span>
+            </div>
+
+            <!-- <div class="ztlist_nocontip"><p>没有找到相关专题</p></div> -->
+        
+            <div class="zt_listitem" ztid="1" qrcode_url="http://www.meishij.net/ajax/qrcode_wap.php?i=1882678" redirect_url="http://www.baidu.com">
+                <div class="w1">
+                    <h1>1专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="javascript:;">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="2" >
+                <div class="w1">
+                    <h1>2专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="3">
+                <div class="w1">
+                    <h1>3专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="nzt_pagew">
+            <a href="" class="prev">◀</a><span>2/<em class="max">14</em></span><a href="" class="next">▶</a>
+            <form class="page_form" action="1.html" flag = "1">
+                <input type="number" name=""><input type="submit" name="" value="跳转" class="goxpagebtn">
+            </form>
+        </div>
+        
+    </div>
+
+
+    <div class="nzt_maintabw" tab="2" style="display:none;">
+
+        <h1 class="nzt_maintitle">
+            已发布的专题（共13条）
+            <div class="ztliststylesw">
+                <span class="ztliststyles_1 current" for="2"></span>
+                <span class="ztliststyles_2 " for="2"></span>
+            </div>
+        </h1>
+        
+        <div class="nzt_search_formw">
+            <form>
+                <input type="text" name="" placeholder="标题"><input type="submit" name="" value="">
+            </form>
+        </div>
+
+
+        <div class="zt_listw " list="2">
+
+            <div class="zt_list_header">
+                <span class="span1">专题内容</span>
+                <span class="span2">更新时间</span>
+                <span class="span3">操作</span>
+            </div>
+
+            <div class="zt_listitem" ztid="1">
+                <div class="w1">
+                    <h1>1专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="2">
+                <div class="w1">
+                    <h1>2专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="3">
+                <div class="w1">
+                    <h1>3专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="4">
+                <div class="w1">
+                    <h1>4专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="5">
+                <div class="w1">
+                    <h1>5专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="6">
+                <div class="w1">
+                    <h1>6专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="7">
+                <div class="w1">
+                    <h1>7专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="8">
+                <div class="w1">
+                    <h1>8专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="9">
+                <div class="w1">
+                    <h1>9专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="10">
+                <div class="w1">
+                    <h1>10专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="11">
+                <div class="w1">
+                    <h1>11专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="12">
+                <div class="w1">
+                    <h1>12专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="zt_listitem" ztid="13">
+                <div class="w1">
+                    <h1>13专题名称专题名称专题名称专题名称专题名称专题名称</h1>
+                    <div class="imgw"><img src="images/ztimg730320.jpg"></div>
+                    <div class="cover"><a href="">预览专题</a></div>
+                </div>
+                <div class="w2">
+                    <p>将于2018年3月2日18:00发布</p>
+                    <div class="btns">
+                        <a href="" class="edit"></a>
+                        <a href="javascript:void(0)" class="del"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="nzt_pagew">
+            <a href="" class="prev">◀</a><span>2/<em class="max">14</em></span><a href="" class="next">▶</a>
+            <form class="page_form" action="1.html" flag = "1">
+                <input type="number" name=""><input type="submit" name="" value="跳转" class="goxpagebtn">
+            </form>
+        </div>
+
+    </div>
+    <div class="nzt_maintabw" tab="3" style="display:none;">
+        <iframe src="./ztsc.html" width="100%" height="1000px" marginwidth="0" frameborder="no" scrolling="no"></iframe>
+    </div>
+
+</div>
+
+
+<div class="blackbg" id="blackbg" style="display:none;"></div>
+<div class="alertbox" id="alertbox" style="height:280px;width:500px;display:none;">
+    <h1>确认删除提示</h1>
+    <p><img src="images/delalerticon.png">　删除后将不可恢复，确认要删除吗？</p>
+    <a href="javascript:void(0);" class="btn ztid_delbtn" ztid="">删除</a>
+    <span class="shutbtn">×</span>
+</div>
+
+
+<script type="text/javascript">
+$(function(){
+    $(".zt_listitem .del").click(function(){
+        var _this = $(this);
+        var ztid = _this.parents(".zt_listitem").attr("ztid");
+        $("#alertbox .ztid_delbtn").attr("ztid",ztid);
+        $("#blackbg").fadeIn();
+        $("#alertbox").fadeIn();
+    });
+
+    $("#alertbox .shutbtn").click(function(){
+        $("#blackbg").fadeOut();
+        $("#alertbox").fadeOut();
+    });
+
+    $(document).on("click",".ztid_delbtn",function(){
+        var _this = $(this);
+        var ztid= _this.attr("ztid");
+        $.post("1.html?ztid="+ztid,function(data){
+            if(data == 1){
+                $(".zt_listitem[ztid="+ztid+"]").remove();
+                $("#blackbg").fadeOut();
+                $("#alertbox").fadeOut();
+            }
+        });
+    });
+
+    $("#blackbg").click(function(){
+        $("#blackbg").fadeOut();
+        $("#alertbox").fadeOut();
+    });
+
+
+});
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
